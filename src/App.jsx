@@ -1,4 +1,5 @@
 import ProductList from "./Components/Productlist";
+import ShoppingCart from "./Components/Shoppingcart";
 
 import {
   useQuery,
@@ -15,6 +16,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <main>
         <h1>HEJ JENYF</h1>
+        <ShoppingCart />
         <ProductList />
       </main>
     </QueryClientProvider>
