@@ -1,5 +1,6 @@
 import ProductList from "./Components/Productlist";
 import { ProductProvider } from "./Context/ProductContext";
+import ShoppingCart from "./Components/Shoppingcart";
 
 import {
   useQuery,
