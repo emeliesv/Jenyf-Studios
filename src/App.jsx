@@ -1,8 +1,23 @@
+import ProductList from "./Components/Productlist";
+
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <main>
-      <h1>HEJ JENYF</h1>
-    </main>
+    <QueryClientProvider client={queryClient}>
+      <main>
+        <h1>HEJ JENYF</h1>
+        <ProductList/>
+      </main>
+   </QueryClientProvider>
   );
 }
 
