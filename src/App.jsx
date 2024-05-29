@@ -1,6 +1,7 @@
 import ProductList from "./Components/Productlist";
 import { ProductProvider } from "./Context/ProductContext";
-import ShoppingCart from "./Components/Shoppingcart";
+import { CartProvider } from "./Context/CartContext";
+import CartIcon from "./Components/CartIcon";
 
 import {
   useQuery,
@@ -15,9 +16,12 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ProductProvider>
-        <ProductList />
-      </ProductProvider>
+      <CartProvider>
+        <ProductProvider>
+          <CartIcon />
+          <ProductList />
+        </ProductProvider>
+      </CartProvider>
     </QueryClientProvider>
   );
 }
