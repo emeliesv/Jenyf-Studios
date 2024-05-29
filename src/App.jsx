@@ -1,4 +1,6 @@
-import ProductList from "./Components/Productlist";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landing from "./Pages/Landing";
+import Checkout from "./Pages/Checkout";
 import { ProductProvider } from "./Context/ProductContext";
 import { CartProvider } from "./Context/CartContext";
 import CartIcon from "./Components/CartIcon";
@@ -18,8 +20,13 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <CartProvider>
         <ProductProvider>
-          <CartIcon />
-          <ProductList />
+          <BrowserRouter>
+            <CartIcon />
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/checkout" element={<Checkout />} />
+            </Routes>
+          </BrowserRouter>
         </ProductProvider>
       </CartProvider>
     </QueryClientProvider>
