@@ -15,8 +15,7 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <main>
-        <h1>HEJ JENYF</h1>
+      <ProductProvider>
         <ProductList />
       </ProductProvider>
     </QueryClientProvider>
