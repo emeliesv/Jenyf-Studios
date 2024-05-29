@@ -15,9 +15,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <main>
         <h1>HEJ JENYF</h1>
-        <ProductList/>
+        <ProductList />
       </main>
-   </QueryClientProvider>
+    </QueryClientProvider>
   );
 }
 
