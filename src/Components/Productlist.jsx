@@ -1,12 +1,8 @@
-import { getProducts} from "../api/dataFetching"
-import {useQuery} from "@tanstack/react-query"
+import { useProducts } from "../Context/ProductContext";
 
 const ProductList = () =>{
 
-    const {data, isLoading, isError} = useQuery({
-        queryKey:["products"],
-        queryFn: getProducts,
-    })
+    const { data, isLoading, isError } = useProducts();
 
     if (isError)
     return <h1>Failed to fetch product</h1>

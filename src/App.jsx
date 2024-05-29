@@ -1,4 +1,5 @@
 import ProductList from "./Components/Productlist";
+import { ProductProvider } from "./Context/ProductContext";
 
 import {
   useQuery,
@@ -13,11 +14,10 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <main>
-        <h1>HEJ JENYF</h1>
-        <ProductList/>
-      </main>
-   </QueryClientProvider>
+      <ProductProvider>
+        <ProductList />
+      </ProductProvider>
+    </QueryClientProvider>
   );
 }
 
