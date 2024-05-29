@@ -1,3 +1,4 @@
+import "./index.css";
 import ShoppingCart from "./Components/Shoppingcart";
 
 function App() {
