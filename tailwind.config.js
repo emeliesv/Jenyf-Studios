@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Poppins", "sans-serif"],
       },
       backgroundColor: {
         jenyfPrimaryBrand: "#E2E3D6",
@@ -12,6 +12,9 @@ export default {
         jenyfNeutralLight: "#FFFFFF",
         jenyfNeutralDark: "#3C3B36",
         jenyfError: "#D72445",
+      },
+      textColor: {
+        jenyfPrimaryText: "#3C3B36",
       },
     },
   },

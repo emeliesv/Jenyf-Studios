@@ -19,15 +19,18 @@ export const CartProvider = (props) => {
     setCart((prevCart) => [...prevCart, productCopy]);
   };
 
-  {
-    /* Behöver modifiera så att inte ex alla väskor försvinner om man vill ta bort en väska. T.ex  */
-  }
   const removeFromCart = (productID) => {
     setCart((prevCart) => prevCart.filter((item) => item.cartID !== productID));
   };
 
+  const calculateTotalSum = () => {
+    return cart.reduce((total, item) => total + item.price, 0);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cart, setCart, addToCart, removeFromCart, calculateTotalSum }}
+    >
       {props.children}
     </CartContext.Provider>
   );
