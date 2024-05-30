@@ -4,6 +4,7 @@ import Checkout from "./Pages/Checkout";
 import { ProductProvider } from "./Context/ProductContext";
 import { CartProvider } from "./Context/CartContext";
 import Header from "./Components/Header";
+import AllProducts from "./Pages/AllProducts";
 import {
   useQuery,
   useMutation,
@@ -24,6 +25,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/products" element={<AllProducts />} />
             </Routes>
           </BrowserRouter>
         </ProductProvider>
