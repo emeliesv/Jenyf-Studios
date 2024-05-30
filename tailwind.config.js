@@ -4,7 +4,17 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ["Poppins", "sans-serif"],
+      },
+      backgroundColor: {
+        jenyfPrimaryBrand: "#E2E3D6",
+        jenyfPrimaryBackground: "#EDECEA",
+        jenyfNeutralLight: "#FFFFFF",
+        jenyfNeutralDark: "#3C3B36",
+        jenyfError: "#D72445",
+      },
+      textColor: {
+        jenyfPrimaryText: "#3C3B36",
       },
     },
   },
