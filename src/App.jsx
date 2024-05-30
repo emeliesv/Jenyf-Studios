@@ -4,6 +4,7 @@ import Checkout from "./Pages/Checkout";
 import { ProductProvider } from "./Context/ProductContext";
 import { CartProvider } from "./Context/CartContext";
 import CartIcon from "./Components/CartIcon";
+import ProductInfo from "./Pages/Productinfo";
 
 import {
   useQuery,
@@ -12,6 +13,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+
 
 const queryClient = new QueryClient();
 
@@ -25,6 +27,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/product/:productId" element= {<ProductInfo/>} />
             </Routes>
           </BrowserRouter>
         </ProductProvider>
