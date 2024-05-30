@@ -1,6 +1,10 @@
-import ProductList from "./Components/Productlist";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landing from "./Pages/Landing";
+import Checkout from "./Pages/Checkout";
 import { ProductProvider } from "./Context/ProductContext";
-
+import { CartProvider } from "./Context/CartContext";
+import CartIcon from "./Components/CartIcon";
+import Header from "./Components/Header";
 import {
   useQuery,
   useMutation,
@@ -14,9 +18,17 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ProductProvider>
-        <ProductList />
-      </ProductProvider>
+      <CartProvider>
+        <ProductProvider>
+          <BrowserRouter>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Landing />} />
+              <Route path="/checkout" element={<Checkout />} />
+            </Routes>
+          </BrowserRouter>
+        </ProductProvider>
+      </CartProvider>
     </QueryClientProvider>
   );
 }
