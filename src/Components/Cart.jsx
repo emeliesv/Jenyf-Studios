@@ -21,11 +21,11 @@ const Cart = () => {
       <h2>This is your shoppingcart:</h2>
       {cart.map((cartItem) => {
         return (
-          <div key={cartItem.id}>
+          <div key={cartItem.cartID}>
             <img src={cartItem.image} alt={cartItem.title} />
             <p>{cartItem.title}</p>
             <p>Price: {cartItem.price}</p>
-            <button onClick={() => removeFromCart(cartItem.id)}>
+            <button onClick={() => removeFromCart(cartItem.cartID)}>
               Remove from cart
             </button>
           </div>
