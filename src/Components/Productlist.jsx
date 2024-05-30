@@ -1,6 +1,7 @@
 import { useProducts } from "../Context/ProductContext";
 import { CartContext } from "../Context/CartContext";
 import { useContext } from "react";
+import { Link } from 'react-router-dom';
 
 const ProductList = () => {
   const { data, isLoading, isError } = useProducts();
@@ -15,7 +16,9 @@ const ProductList = () => {
         data.map((product) => {
           return (
             <div key={product.id} className="mb-4 mt-4">
-              <h1 className="font-bold">{product.title}</h1>
+              <Link to={`/product/${product.id}`}>
+                <h1 className="font-bold">{product.title}</h1>
+              </Link>
               <img src={product.image} alt={product.title} className="w-40" />
               <p>{product.description}</p>
               <div>{product.category}</div>
