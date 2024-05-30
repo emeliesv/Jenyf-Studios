@@ -15,6 +15,9 @@ export const CartProvider = (props) => {
     setCart((prevCart) => [...prevCart, product]);
   };
 
+  {
+    /* Behöver modifiera så att inte ex alla väskor försvinner om man vill ta bort en väska. T.ex  */
+  }
   const removeFromCart = (productID) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productID));
   };
