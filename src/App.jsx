@@ -4,7 +4,7 @@ import Checkout from "./Pages/Checkout";
 import { ProductProvider } from "./Context/ProductContext";
 import { CartProvider } from "./Context/CartContext";
 import CartIcon from "./Components/CartIcon";
-
+import Header from "./Components/Header";
 import {
   useQuery,
   useMutation,
@@ -21,7 +21,7 @@ function App() {
       <CartProvider>
         <ProductProvider>
           <BrowserRouter>
-            <CartIcon />
+            <Header />
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/checkout" element={<Checkout />} />
