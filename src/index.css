@@ -4,6 +4,6 @@
 
 @layer base {
   body {
-    @apply font-sans text-slate-800 bg-zinc-200;
+    @apply font-sans text-jenyfPrimaryText bg-jenyfPrimaryBackground;
   }
 }

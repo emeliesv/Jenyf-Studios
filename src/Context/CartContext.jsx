@@ -12,15 +12,25 @@ export const CartProvider = (props) => {
   }, [cart]);
 
   const addToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
+    const productCopy = {
+      ...product,
+      cartID: Date.now(),
+    };
+    setCart((prevCart) => [...prevCart, productCopy]);
   };
 
   const removeFromCart = (productID) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productID));
+    setCart((prevCart) => prevCart.filter((item) => item.cartID !== productID));
+  };
+
+  const calculateTotalSum = () => {
+    return cart.reduce((total, item) => total + item.price, 0);
   };
 
   return (
-    <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cart, setCart, addToCart, removeFromCart, calculateTotalSum }}
+    >
       {props.children}
     </CartContext.Provider>
   );
