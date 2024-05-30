@@ -12,11 +12,18 @@ export const CartProvider = (props) => {
   }, [cart]);
 
   const addToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
+    const productCopy = {
+      ...product,
+      cartID: Date.now(),
+    };
+    setCart((prevCart) => [...prevCart, productCopy]);
   };
 
+  {
+    /* Behöver modifiera så att inte ex alla väskor försvinner om man vill ta bort en väska. T.ex  */
+  }
   const removeFromCart = (productID) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productID));
+    setCart((prevCart) => prevCart.filter((item) => item.cartID !== productID));
   };
 
   return (
