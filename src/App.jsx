@@ -3,7 +3,6 @@ import Landing from "./Pages/Landing";
 import Checkout from "./Pages/Checkout";
 import { ProductProvider } from "./Context/ProductContext";
 import { CartProvider } from "./Context/CartContext";
-import CartIcon from "./Components/CartIcon";
 import Header from "./Components/Header";
 import {
   useQuery,
