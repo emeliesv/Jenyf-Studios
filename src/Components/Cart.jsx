@@ -1,20 +1,8 @@
-/* Shoppingcart */
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 
 const Cart = () => {
-  const { cart, removeFromCart } = useContext(CartContext);
-
-  let totalSum = 0;
-
-  const calculateTotalSum = () => {
-    for (let i = 0; i < cart.length; i++) {
-      console.log(cart[i].price);
-      totalSum += cart[i].price;
-    }
-    return totalSum;
-  };
-  calculateTotalSum();
+  const { cart, removeFromCart, calculateTotalSum } = useContext(CartContext);
 
   return (
     <section>
@@ -32,7 +20,7 @@ const Cart = () => {
         );
       })}
       <h3 className="border borde-solid border-black m-3 p-2">
-        Total price: {totalSum}
+        Total price: {calculateTotalSum()}
       </h3>
     </section>
   );
