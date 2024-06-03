@@ -5,21 +5,25 @@ const Cart = () => {
   const { cart, removeFromCart, calculateTotalSum } = useContext(CartContext);
 
   return (
-    <section>
-      <h2>This is your shoppingcart:</h2>
+    <section className=" flex flex-col items-center m-5 border border-solid px-5">
       {cart.map((cartItem) => {
         return (
-          <div key={cartItem.cartID}>
-            <img src={cartItem.image} alt={cartItem.title} />
+          <div key={cartItem.cartID} className="flex items-center">
+            <img src={cartItem.image} alt={cartItem.title} className="w-28" />
             <p>{cartItem.title}</p>
-            <p>Price: {cartItem.price}</p>
-            <button onClick={() => removeFromCart(cartItem.cartID)}>
-              Remove from cart
-            </button>
+            <div className="flex flex-col">
+              <div className="m-1">
+                <p className="text-sm font-semibold ">Price:</p>
+                <p className="text-sm font-semibold">{cartItem.price}</p>
+              </div>
+              <button onClick={() => removeFromCart(cartItem.cartID)}>
+                Remove from cart
+              </button>
+            </div>
           </div>
         );
       })}
-      <h3 className="border borde-solid border-black m-3 p-2">
+      <h3 className="w-80 m-3 p-2 font-semibold">
         Total price: {calculateTotalSum()}
       </h3>
     </section>
