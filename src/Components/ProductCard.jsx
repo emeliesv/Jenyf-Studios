@@ -1,6 +1,7 @@
 /* Single product information */
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import { CartContext } from "../Context/CartContext";
 import { useContext } from "react";
 
