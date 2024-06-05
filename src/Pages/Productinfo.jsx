@@ -19,15 +19,15 @@ const ProductInfo = () =>{
     if (!product) return <h1>Product not found</h1>
 
     return (
-      <div className="mx-auto p-4">
-        <div className="flex space-x-4">
-          <div className="w-1/2 p-8 flex justify-center items-center bg-jenyfNeutralLight">
+      <div className="mx-auto p-10">
+        <div className="flex flex-col sm:flex-row sm: space-x-8 space-y-4 sm:spece-y-0">
+          <div className="w-full sm:w-1/2 p-8 flex justify-center items-center bg-jenyfNeutralLight">
             <img className="w-4/5" src={product.image} alt={product.title} />
           </div>
 
-          <div className="w-1/2">
+          <div className="w-full sm:w-1/2">
             <h1 className="mb-4 text-xl font-bold">{product.title}</h1>
-            <div className="mb-4 text-lg">Price: ${product.price}</div>
+            <div className="mb-4 text-lg">{product.price} SEK</div>
             <p className="mb-4">{product.description}</p>
             <div className="mb-4 text-sm">Categoty: {product.category}</div>
 
