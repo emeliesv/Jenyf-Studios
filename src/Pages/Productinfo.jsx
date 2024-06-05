@@ -19,16 +19,23 @@ const ProductInfo = () =>{
     if (!product) return <h1>Product not found</h1>
 
     return (
-        <div>
-            <h1>{product.title}</h1>
-            <img src={product.image} alt={product.title} className="w-40"/>
-            <p>{product.description}</p>
-            <div>Categoty: {product.category}</div>
-            <div>Price: ${product.price}</div>
-            <button onClick={ ()=> addToCart(product)}>Add to Cart</button>
+      <div className="mx-auto p-4">
+        <div className="flex space-x-4">
+          <div className="w-1/2 p-8 flex justify-center items-center bg-jenyfNeutralLight">
+            <img className="w-4/5" src={product.image} alt={product.title} />
+          </div>
 
+          <div className="w-1/2">
+            <h1 className="mb-4 text-xl font-bold">{product.title}</h1>
+            <div className="mb-4 text-lg">Price: ${product.price}</div>
+            <p className="mb-4">{product.description}</p>
+            <div className="mb-4 text-sm">Categoty: {product.category}</div>
+
+            <button onClick={() => addToCart(product)}>Add to Cart</button>
+          </div>
         </div>
-    )
+      </div>
+    );
 }
 
 export default ProductInfo
