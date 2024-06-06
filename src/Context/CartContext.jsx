@@ -12,53 +12,34 @@ export const CartProvider = (props) => {
   }, [cart]);
 
   const addToCart = (product) => {
-    const productCopy = {
-      ...product,
-      cartID: Date.now(),
-      amount: 1,
-    };
     setCart((prevCart) => {
-      const updatedCart = [...prevCart, productCopy];
-      const indexProductInCart = updatedCart.findIndex(
-        (item) => item.cartID == productCopy.cartID
-      );
-      console.log("The updated cart", updatedCart);
-      console.log("The new product is at:", indexProductInCart);
-      console.log("The new product", updatedCart[indexProductInCart]);
-      /* Här ska kod läggas in för att undersöka om produkten finns i varukorgen.
-      Om så är fallet ska amount ökas med 1, annars ska produkten bara läggas till.
-      Förmodligen behöver man göra if-statement innan rad 15 och 
-      undersöka om det finns en produkt med product.id i cart. Då behöver
-      vi nog ta in cart som parameter också. */
-      return updatedCart;
-    });
-  };
-
-  /*
-  Felaktig chatGPT:
-  setCart((prevCart) => {
-      const productInCart = prevCart.findIndex(
+      const cartItemIndex = prevCart.findIndex(
         (cartItem) => cartItem.id === product.id
       );
-      if (productInCart >= 0) {
-        updatedCart = [...prevCart];
-        updatedCart[productInCart] = {
-          ...updatedCart[productInCart],
-          amount: (updatedCart[productInCart].amount || 1) + 1,
-        };
+      if (cartItemIndex !== -1) {
+        const updatedCart = prevCart.map((cartItem, index) => {
+          if (index === cartItemIndex) {
+            return {
+              ...cartItem,
+              amount: ++cartItem.amount,
+            };
+          }
+          return cartItem;
+        });
         return updatedCart;
       } else {
         const productCopy = {
           ...product,
-          cartID: Date.now(),
           amount: 1,
+          cartID: Date.now(),
         };
         return [...prevCart, productCopy];
       }
     });
-  */
+  };
 
   const removeFromCart = (productID) => {
+    /* Uppdatera denna med att minska amount, om amount === 1, deleta med cartID */
     setCart((prevCart) => prevCart.filter((item) => item.cartID !== productID));
   };
 
