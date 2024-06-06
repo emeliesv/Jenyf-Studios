@@ -23,16 +23,12 @@ const Landing = () => {
     }
   });
 
-  console.log(categoryImages)
-
   const categoryWithImage = removeCategoryDuplicates.map((category) => {
     return {
       category: category,
       image: categoryImages[category]
     };
   });
-
-  console.log(categoryWithImage)
 
   return (
     <main className="mx-40 my-20">

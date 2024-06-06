@@ -1,7 +1,6 @@
 import React from "react";
 
 const CategoryCard = ({ category, image }) => {
-    console.log(category)
     return (
         <span className="w-full ">
             <img src={image} className=" w-full h-96" />
