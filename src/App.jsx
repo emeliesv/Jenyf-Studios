@@ -6,6 +6,7 @@ import { CartProvider } from "./Context/CartContext";
 import Header from "./Components/Header";
 import AllProducts from "./Pages/AllProducts";
 import ProductInfo from "./Pages/Productinfo";
+import Footer from "./Components/Footer";
 
 import {
   useQuery,
@@ -30,6 +31,7 @@ function App() {
               <Route path="/products" element={<AllProducts />} />
               <Route path="/product/:productId" element={<ProductInfo />} />
             </Routes>
+            <Footer />
           </BrowserRouter>
         </ProductProvider>
       </CartProvider>
