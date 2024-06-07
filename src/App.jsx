@@ -7,6 +7,7 @@ import Header from "./Components/Header";
 import AllProducts from "./Pages/AllProducts";
 import ProductInfo from "./Pages/Productinfo";
 import Footer from "./Components/Footer";
+import Breadcrumbs from "./Components/Breadcrumbs";
 import Confirmation from "./Pages/Confirmation";
 
 import {
@@ -26,10 +27,11 @@ function App() {
         <ProductProvider>
           <BrowserRouter>
             <Header />
+            <Breadcrumbs />
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/checkout" element={<Checkout />} />
-              <Route path="/product/:productId" element={<ProductInfo />} />
+              <Route path="/products/:productId" element={<ProductInfo />} />
               <Route path="/products" element={<AllProducts />} />
               <Route path="/products/:category" element={<AllProducts />} />
               <Route path="/confirmation" element={<Confirmation />} />
