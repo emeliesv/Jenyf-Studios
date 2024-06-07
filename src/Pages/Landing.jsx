@@ -49,7 +49,7 @@ const Landing = () => {
           categoryWithImage.map((categoryImage) => {
             return (
               <Link
-                to={`/products/${categoryImage.category}`}
+                to={`/products/category/${categoryImage.category}`}
                 key={categoryImage.category}
               >
                 <CategoryCard

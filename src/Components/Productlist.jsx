@@ -9,15 +9,16 @@ const ProductList = ({ selectedCategory }) => {
   if (isError) return <h1>Failed to fetch product</h1>;
   if (isLoading) return <h1>Loading...</h1>;
 
-  const filteredData = selectedCategory ? data.filter((product) => product.category === selectedCategory)
+  const filteredData = selectedCategory
+    ? data.filter((product) => product.category === selectedCategory)
     : data;
 
   return (
     <>
-      <fieldset className=" border">
+      {/* <fieldset className=" border">
         <legend>Select Category</legend>
         <select
-          value={selectedCategory}
+          value={category}
           onChange={(e) => {
             setCategory(e.target.value);
           }}
@@ -28,7 +29,7 @@ const ProductList = ({ selectedCategory }) => {
           <option value={`jewelery`}>Jewelery</option>
           <option value={`electronics`}>Electronics</option>
         </select>
-      </fieldset>
+      </fieldset> */}
       <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1">
         {filteredData &&
           filteredData.map((product) => {
@@ -42,4 +43,3 @@ const ProductList = ({ selectedCategory }) => {
 };
 
 export default ProductList;
-
