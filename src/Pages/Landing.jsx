@@ -1,5 +1,6 @@
 import CategoryCard from "../Components/CategoryCard";
 import { useProducts } from "../Context/ProductContext";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   const { data, isLoading, isError } = useProducts();
@@ -11,7 +12,7 @@ const Landing = () => {
     return product.category;
   });
 
-  const removeCategoryDuplicates = [...new Set(allCategories)];
+  const setFirstInCategory = [...new Set(allCategories)];
 
   const categoryImages = {};
 
@@ -21,7 +22,7 @@ const Landing = () => {
     }
   });
 
-  const categoryWithImage = removeCategoryDuplicates.map((category) => {
+  const categoryWithImage = setFirstInCategory.map((category) => {
     return {
       category: category,
       image: categoryImages[category],
@@ -47,11 +48,15 @@ const Landing = () => {
         {categoryWithImage &&
           categoryWithImage.map((categoryImage) => {
             return (
-              <CategoryCard
+              <Link
+                to={`/products/${categoryImage.category}`}
                 key={categoryImage.category}
-                category={categoryImage.category}
-                image={categoryImage.image}
-              />
+              >
+                <CategoryCard
+                  category={categoryImage.category}
+                  image={categoryImage.image}
+                />
+              </Link>
             );
           })}
       </div>

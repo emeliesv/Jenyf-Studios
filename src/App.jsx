@@ -29,8 +29,9 @@ function App() {
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/checkout" element={<Checkout />} />
-              <Route path="/products" element={<AllProducts />} />
               <Route path="/product/:productId" element={<ProductInfo />} />
+              <Route path="/products" element={<AllProducts />} />
+              <Route path="/products/:category" element={<AllProducts />} />
               <Route path="/confirmation" element={<Confirmation />} />
             </Routes>
             <Footer />
