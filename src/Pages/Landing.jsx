@@ -1,5 +1,6 @@
 import CategoryCard from "../Components/CategoryCard";
 import { useProducts } from "../Context/ProductContext";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
 
@@ -38,7 +39,11 @@ const Landing = () => {
       <div className="grid gap-8 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 flex justify-items-center justify-between">
         {categoryWithImage &&
           categoryWithImage.map((categoryImage) => {
-            return <CategoryCard key={categoryImage.category} category={categoryImage.category} image={categoryImage.image} />
+            return (
+              <Link to={`/products/${categoryImage.category}`} key={categoryImage.category}>
+                <CategoryCard category={categoryImage.category} image={categoryImage.image} />
+              </Link>
+            )
           })}
       </div>
     </main>

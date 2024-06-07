@@ -1,18 +1,16 @@
 import { useProducts } from "../Context/ProductContext";
 import ProductCard from "./ProductCard";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 
-const ProductList = () => {
+const ProductList = ({ selectedCategory }) => {
   const { data, isLoading, isError } = useProducts();
   const [category, setCategory] = useState(``);
-  const { categoryUrl } = useParams();
 
   if (isError) return <h1>Failed to fetch product</h1>;
   if (isLoading) return <h1>Loading...</h1>;
 
-  const selectedCategory = data.find((product) => product.category == categoryUrl)
-  console.log(selectedCategory)
+  const filteredData = selectedCategory ? data.filter((product) => product.category === selectedCategory)
+    : data;
 
   return (
     <>
@@ -32,8 +30,8 @@ const ProductList = () => {
         </select>
       </fieldset>
       <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1">
-        {data &&
-          data.map((product) => {
+        {filteredData &&
+          filteredData.map((product) => {
             return category === product.category || category === "" ? (
               <ProductCard key={product.id} product={product} />
             ) : null;
@@ -45,4 +43,3 @@ const ProductList = () => {
 
 export default ProductList;
 
-/* data && */
