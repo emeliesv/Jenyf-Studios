@@ -6,11 +6,13 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header className="flex justify-between items-center mx-10">
-      <img
-        src={logo}
-        alt="jenyf studios logo"
-        className="w-auto h-6 object-fit"
-      />
+      <Link to="/">
+        <img
+          src={logo}
+          alt="jenyf studios logo"
+          className="w-auto h-6 object-fit"
+        />
+      </Link>
       <div className="hidden sm:flex ">
         <div className="flex flex-row items-center">
           <Nav />
@@ -19,7 +21,7 @@ const Header = () => {
           <CartIcon />
         </Link>
       </div>
-      <div className="flex sm:hidden">
+      <div className="flex sm:hidden ">
         <Link to="/checkout">
           <CartIcon />
         </Link>
