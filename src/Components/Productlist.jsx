@@ -1,13 +1,18 @@
 import { useProducts } from "../Context/ProductContext";
 import ProductCard from "./ProductCard";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const ProductList = () => {
   const { data, isLoading, isError } = useProducts();
   const [category, setCategory] = useState(``);
+  const { categoryUrl } = useParams();
 
   if (isError) return <h1>Failed to fetch product</h1>;
   if (isLoading) return <h1>Loading...</h1>;
+
+  const selectedCategory = data.find((product) => product.category == categoryUrl)
+  console.log(selectedCategory)
 
   return (
     <>
@@ -39,3 +44,5 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
+/* data && */

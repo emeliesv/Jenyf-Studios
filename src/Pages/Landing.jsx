@@ -13,7 +13,7 @@ const Landing = () => {
     return product.category;
   })
 
-  const removeCategoryDuplicates = [...new Set(allCategories)];
+  const setFirstInCategory = [...new Set(allCategories)];
 
   const categoryImages = {};
 
@@ -23,7 +23,7 @@ const Landing = () => {
     }
   });
 
-  const categoryWithImage = removeCategoryDuplicates.map((category) => {
+  const categoryWithImage = setFirstInCategory.map((category) => {
     return {
       category: category,
       image: categoryImages[category]
