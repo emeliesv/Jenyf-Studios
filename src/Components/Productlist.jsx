@@ -14,7 +14,7 @@ const ProductList = () => {
       <fieldset className=" border">
         <legend>Select Category</legend>
         <select
-          value={category}
+          value={selectedCategory}
           onChange={(e) => {
             setCategory(e.target.value);
           }}
