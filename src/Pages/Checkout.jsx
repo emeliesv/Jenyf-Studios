@@ -9,7 +9,7 @@ const Checkout = () => {
   return (
     <>
       <h2>Your shoppingcart:</h2>
-      <Cart />
+      <Cart showControls={true} />
       <Link to="/confirmation" className="mr-4">
         Confirmation
       </Link>
