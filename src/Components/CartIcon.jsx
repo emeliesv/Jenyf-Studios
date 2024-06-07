@@ -27,6 +27,3 @@ const CartIcon = () => {
 };
 
 export default CartIcon;
-/* Om man vill ha siffran intu vagnen:
-yttre div: relative
-div med siffra: absolute z-10 top-1 right-1  */

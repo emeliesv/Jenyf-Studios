@@ -7,6 +7,7 @@ import Header from "./Components/Header";
 import AllProducts from "./Pages/AllProducts";
 import ProductInfo from "./Pages/Productinfo";
 import Footer from "./Components/Footer";
+import Confirmation from "./Pages/Confirmation";
 
 import {
   useQuery,
@@ -30,6 +31,7 @@ function App() {
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/products" element={<AllProducts />} />
               <Route path="/product/:productId" element={<ProductInfo />} />
+              <Route path="/confirmation" element={<Confirmation />} />
             </Routes>
             <Footer />
           </BrowserRouter>
