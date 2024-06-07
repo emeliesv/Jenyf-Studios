@@ -6,6 +6,7 @@ import { CartProvider } from "./Context/CartContext";
 import Header from "./Components/Header";
 import AllProducts from "./Pages/AllProducts";
 import ProductInfo from "./Pages/Productinfo";
+import Footer from "./Components/Footer";
 import Confirmation from "./Pages/Confirmation";
 
 import {
@@ -32,6 +33,7 @@ function App() {
               <Route path="/product/:productId" element={<ProductInfo />} />
               <Route path="/confirmation" element={<Confirmation />} />
             </Routes>
+            <Footer />
           </BrowserRouter>
         </ProductProvider>
       </CartProvider>
