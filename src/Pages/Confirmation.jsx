@@ -1,14 +1,19 @@
 import Cart from "../Components/Cart";
-
 import { Link } from "react-router-dom";
+import check from "../Assets/confirmationcheck.png";
 
 const Confirmation = () => {
   return (
     <>
-      <h2>Confirmation</h2>
+      <h1>Confirmation</h1>
+      <img
+        src={check}
+        alt="jenyf studios logo"
+        className="w-auto h-40 object-fit"
+      />
+      <h3>Thank you for ordering from JENYF STUDIOS</h3>
       <Cart showControls={false} />
       <div className="text-center m-5">
-        <h3>Thank you for your purchase!</h3>
         <Link to="/" className="mr-4">
           Home
         </Link>
