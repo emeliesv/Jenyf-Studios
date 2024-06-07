@@ -12,14 +12,34 @@ export const CartProvider = (props) => {
   }, [cart]);
 
   const addToCart = (product) => {
-    const productCopy = {
-      ...product,
-      cartID: Date.now(),
-    };
-    setCart((prevCart) => [...prevCart, productCopy]);
+    setCart((prevCart) => {
+      const cartItemIndex = prevCart.findIndex(
+        (cartItem) => cartItem.id === product.id
+      );
+      if (cartItemIndex !== -1) {
+        const updatedCart = prevCart.map((cartItem, index) => {
+          if (index === cartItemIndex) {
+            return {
+              ...cartItem,
+              amount: ++cartItem.amount,
+            };
+          }
+          return cartItem;
+        });
+        return updatedCart;
+      } else {
+        const productCopy = {
+          ...product,
+          amount: 1,
+          cartID: Date.now(),
+        };
+        return [...prevCart, productCopy];
+      }
+    });
   };
 
   const removeFromCart = (productID) => {
+    /* Uppdatera denna med att minska amount, om amount === 1, deleta med cartID */
     setCart((prevCart) => prevCart.filter((item) => item.cartID !== productID));
   };
 

@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 
 const Cart = () => {
-  const { cart, removeFromCart, calculateTotalSum } = useContext(CartContext);
+  const { cart, removeFromCart, addToCart, calculateTotalSum } =
+    useContext(CartContext);
 
   return (
     <section className=" flex flex-col items-center m-5 border border-solid px-5">
@@ -16,9 +17,8 @@ const Cart = () => {
                 <p className="text-sm font-semibold ">Price:</p>
                 <p className="text-sm font-semibold">{cartItem.price}</p>
               </div>
-              <button onClick={() => removeFromCart(cartItem.cartID)}>
-                Remove from cart
-              </button>
+              <button onClick={() => removeFromCart(cartItem.cartID)}>-</button>
+              <button onClick={() => addToCart(cartItem)}>+</button>
             </div>
           </div>
         );
