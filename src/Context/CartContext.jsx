@@ -45,14 +45,23 @@ export const CartProvider = (props) => {
       return updatedCart;
     });
   };
-
+  const clearCart = () => {
+    setCart([]);
+  };
   const calculateTotalSum = () => {
     return cart.reduce((total, item) => total + item.price, 0);
   };
 
   return (
     <CartContext.Provider
-      value={{ cart, setCart, addToCart, removeFromCart, calculateTotalSum }}>
+      value={{
+        cart,
+        setCart,
+        addToCart,
+        removeFromCart,
+        calculateTotalSum,
+        clearCart,
+      }}>
       {props.children}
     </CartContext.Provider>
   );
