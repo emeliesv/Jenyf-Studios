@@ -71,7 +71,7 @@ const ProductCard = ({ product }) => {
                     <button
                         type="button"
                         className="inline-flex-end items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800 transition duration-500 ease-in-out transform hover:scale-100" >
-                        <Link to={`/product/${product.id}`}>Details</Link>
+                        <Link to={`/products/${product.id}`}>Details</Link>
                     </button>
                 </div>
             </div>
