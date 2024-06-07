@@ -6,7 +6,8 @@ const CartIcon = () => {
   const { cart } = useContext(CartContext);
 
   const amountProducts = cart.reduce((currentSum, cartItem) => {
-    return cartItem.amount + currentSum;
+    const amount = typeof cartItem.amount === "number" ? cartItem.amount : 0;
+    return amount + currentSum;
   }, 0);
 
   return (
@@ -17,8 +18,7 @@ const CartIcon = () => {
         <p
           className={`text-sm font-bold ${
             amountProducts < 1 ? "text-slate-300" : "text-black"
-          }`}
-        >
+          }`}>
           {amountProducts}
         </p>
       </div>
