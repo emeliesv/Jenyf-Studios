@@ -13,34 +13,37 @@ export const CartProvider = (props) => {
 
   const addToCart = (product) => {
     setCart((prevCart) => {
-      const cartItemIndex = prevCart.findIndex(
+      const existingProduct = prevCart.find(
         (cartItem) => cartItem.id === product.id
       );
-      if (cartItemIndex !== -1) {
-        const updatedCart = prevCart.map((cartItem, index) => {
-          if (index === cartItemIndex) {
-            return {
-              ...cartItem,
-              amount: ++cartItem.amount,
-            };
-          }
-          return cartItem;
-        });
-        return updatedCart;
+
+      if (existingProduct) {
+        return prevCart.map((cartItem) =>
+          cartItem.id === product.id
+            ? { ...cartItem, amount: cartItem.amount + 1 }
+            : cartItem
+        );
       } else {
-        const productCopy = {
-          ...product,
-          amount: 1,
-          cartID: Date.now(),
-        };
-        return [...prevCart, productCopy];
+        return [...prevCart, { ...product, amount: 1, cartID: Date.now() }];
       }
     });
   };
 
   const removeFromCart = (productID) => {
-    /* Uppdatera denna med att minska amount, om amount === 1, deleta med cartID */
-    setCart((prevCart) => prevCart.filter((item) => item.cartID !== productID));
+    setCart((prevCart) => {
+      const updatedCart = prevCart
+        .map((cartItem) => {
+          if (cartItem.id === productID) {
+            return {
+              ...cartItem,
+              amount: cartItem.amount - 1,
+            };
+          }
+          return cartItem;
+        })
+        .filter((cartItem) => cartItem.amount > 0);
+      return updatedCart;
+    });
   };
 
   const calculateTotalSum = () => {

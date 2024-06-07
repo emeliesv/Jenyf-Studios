@@ -17,7 +17,7 @@ const Cart = () => {
                 <p className="text-sm font-semibold ">Price:</p>
                 <p className="text-sm font-semibold">{cartItem.price}</p>
               </div>
-              <button onClick={() => removeFromCart(cartItem.cartID)}>-</button>
+              <button onClick={() => removeFromCart(cartItem.id)}>-</button>
               <button onClick={() => addToCart(cartItem)}>+</button>
             </div>
           </div>
