@@ -51,7 +51,11 @@ export const CartProvider = (props) => {
   };
 
   const calculateTotalSum = () => {
-    return cart.reduce((total, item) => total + item.price * item.amount, 0);
+    const totalSum = cart.reduce(
+      (total, item) => total + item.price * item.amount,
+      0
+    );
+    return Math.round(totalSum * 100) / 100;
   };
 
   return (
