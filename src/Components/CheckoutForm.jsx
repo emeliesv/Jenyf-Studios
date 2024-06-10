@@ -16,6 +16,8 @@ const CheckoutForm = () => {
     city: "",
   });
   const { clearCart } = useContext(CartContext);
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -31,6 +33,10 @@ const CheckoutForm = () => {
       clearCart();
       navigate("/");
     }
+  };
+
+  const handleClick = (imageID) => {
+    setSelectedImage(imageID);
   };
 
   const handleSubmit = (e) => {
@@ -102,10 +108,46 @@ const CheckoutForm = () => {
         />
       </div>
       <div className="payment-icons">
-        <img src={payment1} alt="payment1" className="w-auto h-6 object-fit" />
-        <img src={payment2} alt="payment2" className="w-auto h-6 object-fit" />
-        <img src={payment3} alt="payment3" className="w-auto h-6 object-fit" />
-        <img src={payment4} alt="payment4" className="w-auto h-6 object-fit" />
+        <img
+          src={payment1}
+          alt="payment1"
+          onClick={() => handleClick(1)}
+          className={`w-auto h-6 object-fit m-2 hover:border hover:border-black ${
+            selectedImage === 1
+              ? "border border-black"
+              : "border border-transparent"
+          } cursor-pointer`}
+        />
+        <img
+          src={payment2}
+          alt="payment2"
+          onClick={() => handleClick(2)}
+          className={`w-auto h-6 object-fit m-2 hover:border hover:border-black ${
+            selectedImage === 2
+              ? "border border-black"
+              : "border border-transparent"
+          } cursor-pointer`}
+        />
+        <img
+          src={payment3}
+          alt="payment3"
+          onClick={() => handleClick(3)}
+          className={`w-auto h-6 object-fit m-2 hover:border hover:border-black ${
+            selectedImage === 3
+              ? "border border-black"
+              : "border border-transparent"
+          } cursor-pointer`}
+        />
+        <img
+          src={payment4}
+          alt="payment4"
+          onClick={() => handleClick(4)}
+          className={`w-auto h-6 object-fit m-2 hover:border hover:border-black ${
+            selectedImage === 4
+              ? "border border-black"
+              : "border border-transparent"
+          } cursor-pointer`}
+        />
       </div>
       <div className="form-buttons">
         <button type="button" onClick={handleCancel}>
