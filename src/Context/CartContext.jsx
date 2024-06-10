@@ -45,11 +45,17 @@ export const CartProvider = (props) => {
       return updatedCart;
     });
   };
+
   const clearCart = () => {
     setCart([]);
   };
+
   const calculateTotalSum = () => {
-    return cart.reduce((total, item) => total + item.price, 0);
+    const totalSum = cart.reduce(
+      (total, item) => total + item.price * item.amount,
+      0
+    );
+    return Math.round(totalSum * 100) / 100;
   };
 
   return (
@@ -61,7 +67,8 @@ export const CartProvider = (props) => {
         removeFromCart,
         calculateTotalSum,
         clearCart,
-      }}>
+      }}
+    >
       {props.children}
     </CartContext.Provider>
   );
