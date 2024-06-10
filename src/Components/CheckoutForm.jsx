@@ -111,7 +111,11 @@ const CheckoutForm = () => {
         <button type="button" onClick={handleCancel}>
           Cancel
         </button>
-        <button type="submit">Confirm</button>
+        <button type="submit" onClick={() => clearCart()}>
+          {" "}
+          {/* Behöver justeras så man inte kan confirma om inte alla fält är ifyllda*/}
+          Confirm
+        </button>
       </div>
     </form>
   );
