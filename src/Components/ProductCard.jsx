@@ -62,7 +62,7 @@ const ProductCard = ({ product }) => {
                     </Link>
                     <button
                         type="button"
-                        className=" bg-[#BFC1B6] px-4 py-2 text-sm font-medium text-white rounded-lg hover:bg-slate-400 focus:ring-4 focus:outline-none focus:ring-indigo-300 transition duration-300"
+                        className=" bg-[#BFC1B6] px-4 py-2 text-sm font-medium text-black rounded-lg hover:bg-slate-400 focus:ring-4 focus:outline-none focus:ring-indigo-300 transition duration-300"
                         onClick={() => addToCart(product)}
                     >
                         Add To Cart
