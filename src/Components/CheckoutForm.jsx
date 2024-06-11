@@ -45,115 +45,123 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="checkout-form">
-      <div>
-        <label>First Name:</label>
-        <input
-          type="text"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          required
-        />
+    <form onSubmit={handleSubmit} className="flex flex-col w-full sm:mx-2 lg:w-1/2 lg:mx-4">
+      <div className="flex justify-between mb-2 flex-col w-full md:flex-row">
+        <div className="flex flex-col w-full lg:w-1/2">
+          <label className="text-xs mt-3 mb-2">First Name:</label>
+          <input
+            type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+            className="sm:mr-4 lg:mr-4 p-2 border border-solid"
+          />
+        </div>
+        <div className="flex flex-col w-full lg:w-1/2">
+          <label className="text-xs mt-3 mb-2">Last Name:</label>
+          <input
+            type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            required
+            className="p-2 border border-solid"
+          />
+        </div>
       </div>
-      <div>
-        <label>Last Name:</label>
-        <input
-          type="text"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Email:</label>
+      <div className="flex flex-col">
+        <label className="text-xs mt-3 mb-2">Email:</label>
         <input
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
           required
+          className="p-2 border border-solid"
         />
       </div>
-      <div>
-        <label>Address:</label>
+      <div className="flex flex-col">
+        <label className="text-xs mt-3 mb-2">Address:</label>
         <input
           type="text"
           name="address"
           value={formData.address}
           onChange={handleChange}
           required
+          className="p-2 border border-solid"
         />
       </div>
-
+      <div className="flex flex-row w-full justify-between mb-2">
+        <div className="flex flex-col w-1/3">
+          <label className="text-xs mt-3 mb-2">Postal Code:</label>
+          <input
+            type="text"
+            name="postalCode"
+            value={formData.postalCode}
+            onChange={handleChange}
+            required
+            className=" mr-4 p-2 border border-solid"
+          />
+        </div>
+        <div className="flex flex-col w-2/3">
+          <label className="text-xs mt-3 mb-2">City:</label>
+          <input
+            type="text"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+            required
+            className="p-2 border border-solid"
+          />
+        </div>
+      </div>
+      <div className="payment-icons flex flex-col">
+        <p className="text-sm font-semibold mt-6">Payment methods:</p>
+        <div className=" flex flex-row mb-6">
+          <img
+            src={payment1}
+            alt="payment1"
+            onClick={() => handleClick(1)}
+            className={`w-auto h-10 object-fit mr-2 mt-2 hover:border hover:border-black ${selectedImage === 1
+              ? "border border-black"
+              : "border border-transparent"
+              } cursor-pointer`}
+          />
+          <img
+            src={payment2}
+            alt="payment2"
+            onClick={() => handleClick(2)}
+            className={`w-auto h-10 object-fit m-2 hover:border hover:border-black ${selectedImage === 2
+              ? "border border-black"
+              : "border border-transparent"
+              } cursor-pointer`}
+          />
+          <img
+            src={payment3}
+            alt="payment3"
+            onClick={() => handleClick(3)}
+            className={`w-auto h-10 object-fit m-2 hover:border hover:border-black ${selectedImage === 3
+              ? "border border-black"
+              : "border border-transparent"
+              } cursor-pointer`}
+          />
+          <img
+            src={payment4}
+            alt="payment4"
+            onClick={() => handleClick(4)}
+            className={`w-auto h-10 object-fit m-2 hover:border hover:border-black ${selectedImage === 4
+              ? "border border-black"
+              : "border border-transparent"
+              } cursor-pointer`}
+          />
+        </div>
+      </div>
       <div>
-        <label>Postal Code:</label>
-        <input
-          type="text"
-          name="postalCode"
-          value={formData.postalCode}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>City:</label>
-        <input
-          type="text"
-          name="city"
-          value={formData.city}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div className="payment-icons">
-        <img
-          src={payment1}
-          alt="payment1"
-          onClick={() => handleClick(1)}
-          className={`w-auto h-6 object-fit m-2 hover:border hover:border-black ${
-            selectedImage === 1
-              ? "border border-black"
-              : "border border-transparent"
-          } cursor-pointer`}
-        />
-        <img
-          src={payment2}
-          alt="payment2"
-          onClick={() => handleClick(2)}
-          className={`w-auto h-6 object-fit m-2 hover:border hover:border-black ${
-            selectedImage === 2
-              ? "border border-black"
-              : "border border-transparent"
-          } cursor-pointer`}
-        />
-        <img
-          src={payment3}
-          alt="payment3"
-          onClick={() => handleClick(3)}
-          className={`w-auto h-6 object-fit m-2 hover:border hover:border-black ${
-            selectedImage === 3
-              ? "border border-black"
-              : "border border-transparent"
-          } cursor-pointer`}
-        />
-        <img
-          src={payment4}
-          alt="payment4"
-          onClick={() => handleClick(4)}
-          className={`w-auto h-6 object-fit m-2 hover:border hover:border-black ${
-            selectedImage === 4
-              ? "border border-black"
-              : "border border-transparent"
-          } cursor-pointer`}
-        />
-      </div>
-      <div className="form-buttons">
-        <button type="button" onClick={handleCancel}>
+        <button type="submit" className="w-2/5 py-2 mr-4 border border-solid border-black bg-jenyfPrimaryBrand font-semibold">Confirm</button>
+        <button type="button" onClick={handleCancel} className="w-2/5 py-2  border border-solid border-black bg-jenyfNeutralLight">
           Cancel
         </button>
-        <button type="submit">Confirm</button>
       </div>
     </form>
   );

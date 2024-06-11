@@ -6,30 +6,32 @@ const Cart = ({ showControls = true }) => {
     useContext(CartContext);
 
   return (
-    <section className=" flex flex-col items-center m-5 border border-solid px-5">
+    <section className=" flex flex-col bg-white sm:w-full sm:mx-2 lg:w-1/2">
       {cart.map((cartItem) => (
         <div key={cartItem.cartID} className="flex items-center">
-          <img src={cartItem.image} alt={cartItem.title} className="w-28" />
-          <div className="flex flex-col m-1">
-            <p>{cartItem.title}</p>
-            <p>Amount: {cartItem.amount}</p>
-          </div>
-          <div className="flex flex-col">
-            <div className="m-1">
-              <p className="text-sm font-semibold ">Price:</p>
-              <p className="text-sm font-semibold">{cartItem.price}</p>
+          <img src={cartItem.image} alt={cartItem.title} className="m-6 w-1/3 lg:1/2" />
+          <div className="w-2/3 mr-4 flex-col md:flex-row">
+            <div className="flex flex-col">
+              <p className="font-semibold text-xs md:text-sm lg:text-base mb-4">{cartItem.title}</p>
+              <p className="text-xs">Amount: {cartItem.amount}</p>
             </div>
-            {showControls && (
-              <>
-                <button onClick={() => removeFromCart(cartItem.id)}>-</button>
-                <button onClick={() => addToCart(cartItem)}>+</button>
-              </>
-            )}
+            <div className="flex flex-row justify-between items-center">
+              {showControls && (
+                <div>
+                  <button onClick={() => removeFromCart(cartItem.id)} className="border border-solid border-black w-8 mr-2 mt-2 mb-4">-</button>
+                  <button onClick={() => addToCart(cartItem)} className="border border-solid border-black w-8">+</button>
+                </div>
+              )}
+              <div className="m-1 flex flex-row text-xs">
+                <p className="text-xs">{cartItem.price}</p>
+                <p className="text-xs"> SEK</p>
+              </div>
+            </div>
           </div>
         </div>
       ))}
-      <h3 className="w-80 m-3 p-2 font-semibold">
-        Total price: {calculateTotalSum()}
+      <h3 className="text-right my-3 pr-3 font-semibold w-full">
+        Total price: {calculateTotalSum()} SEK
       </h3>
     </section>
   );
