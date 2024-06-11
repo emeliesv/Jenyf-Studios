@@ -18,33 +18,43 @@
   .text-xxs {
     font-size: 10px;
   }
+
   .text-xs {
     font-size: 13px;
   }
+
   .text-sm {
     font-size: 16px;
   }
+
   .text-md {
     font-size: 20px;
   }
+
   .text-lg {
     font-size: 25px;
   }
+
   .text-xl {
     font-size: 31px;
   }
+
   .text-xxl {
     font-size: 39px;
   }
+
   .text-3xl {
     font-size: 49px;
   }
+
   .text-4xl {
     font-size: 61px;
   }
+
   .text-5xl {
     font-size: 76px;
   }
+
   .text-6xl {
     font-size: 95px;
   }
