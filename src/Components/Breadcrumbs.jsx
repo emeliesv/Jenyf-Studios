@@ -16,19 +16,19 @@ const Breadcrumbs = () => {
         {pathname.map((value, index) => {
           const to = `/${pathname.slice(0, index + 1).join("/")}`;
           const isLast = index === pathname.length - 1;
-          
+
           return isLast ? (
-        <li key={to} className='text-gray-500'>
-            {value.charAt(0).toUpperCase() + value.slice(1)}
-        </li>
-    ) : (
-        <li key={to}>
-            <Link to={to} className='hover:underline'>
+            <li key={to} className="text-gray-500">
+              {value.charAt(0).toUpperCase() + value.slice(1)}
+            </li>
+          ) : (
+            <li key={to}>
+              <Link to={to} className="hover:underline">
                 {value.charAt(0).toUpperCase() + value.slice(1)}
-            </Link>
-            <span className='mx-2'>/</span>
-        </li>
-    )
+              </Link>
+              <span className="mx-2">/</span>
+            </li>
+          );
         })}
       </ol>
     </nav>
