@@ -36,7 +36,7 @@ const Landing = () => {
       <div className="relative">
         <img src={hero2} alt="Three people sitting on the grass laughing" className="w-full h-96 object-cover object-[center_top_20%]"></img>
         <Link to="/products">
-          <button className="bg-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <button className="bg-jenyfPrimaryBackground absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             Shop all products
           </button>
         </Link>
@@ -45,7 +45,7 @@ const Landing = () => {
       <p className="text-center pt-4 pb-10 px-24 lg:text-base md:text-sm sm:text-xs">
         Discover the latest trends of the season with our wide range of men's and women's clothing, perfect for keeping you both warm and stylish during the cooler months. Refresh your wardrobe with everything from elegant outerwear to comfortable everyday clothes, while also finding the latest tech gadgets and stylish jewelry that add the finishing touch. Shop now and welcome autumn in style!
       </p>
-      <div className="grid gap-8 contain lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
+      <div className="grid gap-8 contain lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 ">
         {categoryWithImage &&
           categoryWithImage.map((categoryImage) => {
             return (

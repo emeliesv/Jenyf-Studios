@@ -8,8 +8,8 @@ export default {
       },
       backgroundColor: {
         jenyfPrimaryBrand: "#E2E3D6",
-        jenyfPrimaryBackground: "#EDECEA",
-        jenyfNeutralLight: "#FFFFFF",
+        jenyfPrimaryBackground: "#FFFFFF",
+        jenyfNeutralLight: "#EDECEA",
         jenyfNeutralDark: "#3C3B36",
         jenyfError: "#D72445",
       },
