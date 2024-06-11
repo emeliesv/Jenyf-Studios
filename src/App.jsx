@@ -3,9 +3,13 @@ import Landing from "./Pages/Landing";
 import Checkout from "./Pages/Checkout";
 import { ProductProvider } from "./Context/ProductContext";
 import { CartProvider } from "./Context/CartContext";
-import CartIcon from "./Components/CartIcon";
 import Header from "./Components/Header";
 import AllProducts from "./Pages/AllProducts";
+import ProductInfo from "./Pages/Productinfo";
+import Footer from "./Components/Footer";
+import Breadcrumbs from "./Components/Breadcrumbs";
+import Confirmation from "./Pages/Confirmation";
+
 import {
   useQuery,
   useMutation,
@@ -23,11 +27,19 @@ function App() {
         <ProductProvider>
           <BrowserRouter>
             <Header />
+            <Breadcrumbs />
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/products/id/:productId" element={<ProductInfo />} />
               <Route path="/products" element={<AllProducts />} />
+              <Route
+                path="/products/category/:category"
+                element={<AllProducts />}
+              />
+              <Route path="/confirmation" element={<Confirmation />} />
             </Routes>
+            <Footer />
           </BrowserRouter>
         </ProductProvider>
       </CartProvider>

@@ -12,24 +12,62 @@ export const CartProvider = (props) => {
   }, [cart]);
 
   const addToCart = (product) => {
-    const productCopy = {
-      ...product,
-      cartID: Date.now(),
-    };
-    setCart((prevCart) => [...prevCart, productCopy]);
+    setCart((prevCart) => {
+      const existingProduct = prevCart.find(
+        (cartItem) => cartItem.id === product.id
+      );
+
+      if (existingProduct) {
+        return prevCart.map((cartItem) =>
+          cartItem.id === product.id
+            ? { ...cartItem, amount: cartItem.amount + 1 }
+            : cartItem
+        );
+      } else {
+        return [...prevCart, { ...product, amount: 1, cartID: Date.now() }];
+      }
+    });
   };
 
   const removeFromCart = (productID) => {
-    setCart((prevCart) => prevCart.filter((item) => item.cartID !== productID));
+    setCart((prevCart) => {
+      const updatedCart = prevCart
+        .map((cartItem) => {
+          if (cartItem.id === productID) {
+            return {
+              ...cartItem,
+              amount: cartItem.amount - 1,
+            };
+          }
+          return cartItem;
+        })
+        .filter((cartItem) => cartItem.amount > 0);
+      return updatedCart;
+    });
+  };
+
+  const clearCart = () => {
+    setCart([]);
   };
 
   const calculateTotalSum = () => {
-    return cart.reduce((total, item) => total + item.price, 0);
+    const totalSum = cart.reduce(
+      (total, item) => total + item.price * item.amount,
+      0
+    );
+    return Math.round(totalSum * 100) / 100;
   };
 
   return (
     <CartContext.Provider
-      value={{ cart, setCart, addToCart, removeFromCart, calculateTotalSum }}
+      value={{
+        cart,
+        setCart,
+        addToCart,
+        removeFromCart,
+        calculateTotalSum,
+        clearCart,
+      }}
     >
       {props.children}
     </CartContext.Provider>
