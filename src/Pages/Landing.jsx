@@ -36,7 +36,7 @@ const Landing = () => {
       <div className="relative">
         <img src={hero2} alt="Three people sitting on the grass laughing" className="w-full h-96 object-cover object-[center_top_20%]"></img>
         <Link to="/products">
-          <button className="bg-jenyfPrimaryBackground absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <button className="bg-jenyfNeutralLight absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             Shop all products
           </button>
         </Link>
