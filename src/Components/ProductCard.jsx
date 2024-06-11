@@ -1,4 +1,3 @@
-/* Single product information */
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
@@ -12,35 +11,29 @@ const ProductCard = ({ product }) => {
   const RatingReview = () => {
     return (
       <div>
-        {[1, 2, 3, 4, 5].map((key, star) => {
-          return (
-            <span
-              key={key}
-              className="start"
-              style={{
-                cursor: "pointer",
-                color: ratingOfCurrentProduct >= star ? "gold" : "gray",
-                fontSize: `35px`,
-              }}
-              onClick={() => {
-                setRating(star);
-              }}
-            >
-              {" "}
-              ★{" "}
-            </span>
-          );
-        })}
+        {[1, 2, 3, 4, 5].map((star) => (
+          <span
+            key={star}
+            className="star"
+            style={{
+              cursor: "pointer",
+              color: ratingOfCurrentProduct >= star ? "gold" : "gray",
+              fontSize: `35px`,
+            }}
+            onClick={() => setRating(star)}
+          >
+            ★
+          </span>
+        ))}
       </div>
     );
   };
 
+  const urlSafeTitle = title.replace(/\s+/g, "-").toLowerCase();
+
   return (
-    <div
-      className="container mx-auto max-w-sm  h-full w-full bg-[#3c3b36] rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-70 border border-gray-100
-            flex flex-col justify-between "
-    >
-      <div className=" overflow-hidden rounded-lg bg-white grid items-center ">
+    <div className="container mx-auto max-w-sm h-full w-full bg-[#3c3b36] rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-70 border border-gray-100 flex flex-col justify-between">
+      <div className="overflow-hidden rounded-lg bg-white grid items-center">
         <img
           className="transition duration-500 ease-in-out transform hover:scale-90 h-96"
           src={image}
@@ -52,7 +45,7 @@ const ProductCard = ({ product }) => {
           {title}
         </h5>
         <h6 className="mb-4 font-medium text-m text-neutral-600 dark:text-neutral-200">
-          {RatingReview(ratingOfCurrentProduct)}
+          {RatingReview()}
           {rating.count + " reviews"}
           <br />
           {price}
@@ -68,14 +61,13 @@ const ProductCard = ({ product }) => {
           >
             Add To Cart
           </button>
-          <Link to={`/products/id/${product.id}`}>
-            <button
-              type="button"
-              className="inline-flex-end items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800 transition duration-500 ease-in-out transform hover:scale-100"
-            >
-              Details
-            </button>
-          </Link>
+          <button
+            onClick={() => localStorage.setItem("lastClickItem", product.id)}
+            type="button"
+            className="inline-flex-end items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800 transition duration-500 ease-in-out transform hover:scale-100"
+          >
+            <Link to={`/products/${urlSafeTitle}`}>Details</Link>
+          </button>
         </div>
       </div>
     </div>
