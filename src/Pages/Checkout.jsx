@@ -1,15 +1,13 @@
 import Cart from "../Components/Cart";
-
-const orderConfirmed = () => {
-  console.log("Order confirmed!");
-};
+import { Link } from "react-router-dom";
+import CheckoutForm from "../Components/CheckoutForm";
 
 const Checkout = () => {
   return (
     <>
       <h2>Your shoppingcart:</h2>
-      <Cart />
-      <button onClick={() => orderConfirmed()}>Confirm order</button>
+      <Cart showControls={true} />
+      <CheckoutForm />
     </>
   );
 };
