@@ -16,8 +16,14 @@ const ProductList = ({ selectedCategory }) => {
 
   const handleCategoryChange = (e) => {
     const selected = e.target.value;
-    navigate(`/products/category/${selected}`);
+    if (e.target.value === "") {
+      navigate('/products')
+    } else {
+      navigate(`/products/category/${selected}`);
+
+    }
   };
+
 
   return (
     <>
