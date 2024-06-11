@@ -9,7 +9,6 @@ const AllProducts = () => {
 
   return (
     <section>
-      <h2>Our products:</h2>
       <ProductList selectedCategory={category} />
     </section>
   );
