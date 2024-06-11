@@ -10,7 +10,10 @@ const Cart = ({ showControls = true }) => {
       {cart.map((cartItem) => (
         <div key={cartItem.cartID} className="flex items-center">
           <img src={cartItem.image} alt={cartItem.title} className="w-28" />
-          <p>{cartItem.title}</p>
+          <div className="flex flex-col m-1">
+            <p>{cartItem.title}</p>
+            <p>Amount: {cartItem.amount}</p>
+          </div>
           <div className="flex flex-col">
             <div className="m-1">
               <p className="text-sm font-semibold ">Price:</p>
