@@ -13,7 +13,6 @@ const ProductCard = ({ product }) => {
                 {[1, 2, 3, 4, 5].map((star) => (
                     <span
                         key={star}
-                        className="star"
                         style={{
                             cursor: 'pointer',
                             color: ratingOfCurrentProduct >= star ? 'gold' : 'gray',
@@ -28,48 +27,51 @@ const ProductCard = ({ product }) => {
         );
     };
 
+    const truncatedDescription = description.split(' ').slice(0, 10).join(' ');
+
     return (
-        <div className="bg-[#3c3b36] rounded-md backdrop-filter backdrop-blur-md bg-opacity-70 border border-gray-100 flex flex-col justify-between p-4 w-full max-w-xs mx-auto">
-            <div className="flex justify-center items-center overflow-hidden rounded-lg bg-white h-48 sm:h-60 md:h-72 lg:h-80 xl:h-96 w-full">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-sm mx-auto tra hover:shadow-2xl transition duration-500 flex flex-col justify-between items-center transform hover:scale-105">
+            <Link to={`/product/${product.id}`}><div className="overflow-hidden h-48 py-4 bg-white">
                 <img
-                    className="transition duration-500 ease-in-out transform hover:scale-90 max-h-full max-w-full object-cover"
+                    className="object-contain object-center w-full h-full "
                     src={image}
                     alt={title}
                 />
-            </div>
-            <div className="flex flex-col mt-4">
-                <h5 className="text-base sm:text-lg md:text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50 mb-2">
-                    {title}
-                </h5>
-                <div className="flex flex-col mb-4 text-sm sm:text-base md:text-lg text-neutral-600 dark:text-neutral-200">
-                    <div className="flex justify-between items-center mb-2">
-                        <RatingReview />
-                        <span>{rating.count} reviews</span>
-                    </div>
-                    <span className="font-bold">${price}</span>
+            </div></Link>
+
+            <div className="p-4">
+                <h5 className="text-lg font-medium text-gray-800 mb-2">{title}</h5>
+
+                <div className="mb-2 flex justify-between items-center">
+                    <RatingReview />
+                    <span className="text-gray-600">{rating.count} reviews</span>
                 </div>
-                <p className="text-xs sm:text-sm md:text-base text-neutral-600 dark:text-neutral-200 h-20 overflow-hidden truncate mb-4">
-                    {description}
-                </p>
-                <button
-                    type="button"
-                    className="mb-2 border-none text-xs sm:text-sm md:text-base lg:text-lg font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800 transition duration-500 ease-in-out py-1 sm:py-2 md:py-3 w-full"
-                    onClick={() => addToCart(product)}
-                >
-                    Add To Cart
-                </button>
-                <Link to={`/product/${product.id}`} className="flex-1 w-full">
+
+                <span className="text-lg font-semibold text-gray-900">${price}</span>
+
+                <p className="text-sm text-gray-700 mt-2 mb-4 max-h-12 overflow-ellipsis">{truncatedDescription}...</p>
+
+                <div className="flex justify-between">
+                    <Link to={`/product/${product.id}`}>
+                        <button
+                            type="button"
+                            className="px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border border-black rounded-lg hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 transition duration-300"
+                        >
+                            Details
+                        </button>
+                    </Link>
                     <button
                         type="button"
-                        className="w-full border-none text-xs sm:text-sm md:text-base lg:text-lg font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800 transition duration-500 ease-in-out py-1 sm:py-2 md:py-3"
+                        className=" bg-[#BFC1B6] px-4 py-2 text-sm font-medium text-white rounded-lg hover:bg-slate-400 focus:ring-4 focus:outline-none focus:ring-indigo-300 transition duration-300"
+                        onClick={() => addToCart(product)}
                     >
-                        Details
+                        Add To Cart
                     </button>
-                </Link>
+
+                </div>
             </div>
         </div>
     );
 };
 
 export default ProductCard;
-
