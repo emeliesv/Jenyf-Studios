@@ -6,7 +6,7 @@ import pinterest from "../Assets/pinterest.png";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between p-8 bg-jenyfPrimaryBrand">
+    <footer className="flex flex-col md:flex-row items-center justify-between p-8 bg-jenyfPrimaryBrand absolute bottom-0 w-full">
       <img
         src={logo}
         alt="jenyf studios logo"
@@ -30,7 +30,7 @@ const Footer = () => {
           className="w-auto h-6 object-fit"
         />
       </div>
-    </div>
+    </footer>
   );
 };
 
