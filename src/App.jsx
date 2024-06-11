@@ -27,6 +27,7 @@ function App() {
         <ProductProvider>
           <BrowserRouter>
             <Header />
+
             <Breadcrumbs />
             <Routes>
               <Route path="/" element={<Landing />} />
@@ -39,6 +40,7 @@ function App() {
               />
               <Route path="/confirmation" element={<Confirmation />} />
             </Routes>
+
             <Footer />
           </BrowserRouter>
         </ProductProvider>
