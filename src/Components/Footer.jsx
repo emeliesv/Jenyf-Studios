@@ -6,14 +6,14 @@ import pinterest from "../Assets/pinterest.png";
 
 const Footer = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between mx-10 py-8">
+    <div className="flex flex-col md:flex-row items-center justify-between p-8 bg-jenyfPrimaryBrand">
       <img
         src={logo}
         alt="jenyf studios logo"
         className="h-3 object-fit mb-4 md:mb-0"
       />
-      <div>© 2024 Jenyf-Studios</div>
-      <div className="flex items-center space-x-4 mt-4 md:mb-0">
+      <div>© 2024 Jenyf Studios</div>
+      <div className="flex items-center space-x-4 md:mb-0">
         <img
           src={facebook}
           alt="facebook icon"
