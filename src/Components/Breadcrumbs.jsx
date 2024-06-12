@@ -12,7 +12,7 @@ const Breadcrumbs = () => {
 
   return (
     <nav>
-      <ol className="list-reset flex ml-12 mb-4">
+      <ol className="list-reset flex ml-12 my-4">
         <li>
           <Link to="/" className="hover:underline">
             Home
