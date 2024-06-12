@@ -151,7 +151,7 @@ const CheckoutForm = () => {
         </div>
       </div>
       <div>
-        <button type="submit" className="w-2/5 py-2 mr-4 border border-solid border-black bg-jenyfPrimaryBrand font-semibold">Confirm</button>
+        <button type="submit" className="w-full py-2 mr-4 border border-solid border-black bg-jenyfPrimaryBrand font-semibold">Confirm</button>
       </div>
     </form>
   );
