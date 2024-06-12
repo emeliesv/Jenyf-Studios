@@ -5,16 +5,16 @@ import logo from "../Assets/logo_large.png";
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
-    <header className="flex justify-between items-center mx-10">
+    <header className="flex justify-between items-center sticky top-0 z-10 bg-jenyfPrimaryBrand font-semibold px-8">
       <Link to="/">
         <img
           src={logo}
           alt="jenyf studios logo"
-          className="w-auto h-6 object-fit"
+          className="w-auto h-4 object-contain"
         />
       </Link>
-      <div className="hidden sm:flex ">
-        <div className="flex flex-row items-center">
+      <div className=" w-3/5 hidden sm:flex justify-between">
+        <div className="flex items-center">
           <Nav />
         </div>
         <Link to="/checkout">

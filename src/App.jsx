@@ -27,11 +27,12 @@ function App() {
         <ProductProvider>
           <BrowserRouter>
             <Header />
+
             <Breadcrumbs />
             <Routes>
               <Route path="/" element={<Landing />} />
               <Route path="/checkout" element={<Checkout />} />
-              <Route path="/products/id/:productId" element={<ProductInfo />} />
+              <Route path="/products/:productTitle" element={<ProductInfo />} />
               <Route path="/products" element={<AllProducts />} />
               <Route
                 path="/products/category/:category"
@@ -39,6 +40,7 @@ function App() {
               />
               <Route path="/confirmation" element={<Confirmation />} />
             </Routes>
+
             <Footer />
           </BrowserRouter>
         </ProductProvider>
