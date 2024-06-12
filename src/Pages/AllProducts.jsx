@@ -9,7 +9,6 @@ const AllProducts = () => {
 
   return (
     <section className="pb-40">
-      <h2>Our products:</h2>
       <ProductList selectedCategory={category} />
     </section>
   );
