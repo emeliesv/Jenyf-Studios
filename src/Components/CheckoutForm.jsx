@@ -28,13 +28,6 @@ const CheckoutForm = () => {
     });
   };
 
-  const handleCancel = () => {
-    if (window.confirm("Are you sure you want to cancel the order?")) {
-      clearCart();
-      navigate("/");
-    }
-  };
-
   const handleClick = (imageID) => {
     setSelectedImage(imageID);
   };
@@ -48,7 +41,7 @@ const CheckoutForm = () => {
     <form onSubmit={handleSubmit} className="flex flex-col w-full sm:mx-2 lg:w-1/2 lg:mx-4">
       <div className="flex justify-between mb-2 flex-col w-full md:flex-row">
         <div className="flex flex-col w-full lg:w-1/2">
-          <label className="text-xs mt-3 mb-2">First Name:</label>
+          <label className="text-xs mt-3 md:mt-0 mb-2">First Name:</label>
           <input
             type="text"
             name="firstName"
@@ -59,7 +52,7 @@ const CheckoutForm = () => {
           />
         </div>
         <div className="flex flex-col w-full lg:w-1/2">
-          <label className="text-xs mt-3 mb-2">Last Name:</label>
+          <label className="text-xs mt-3 md:mt-0 mb-2">Last Name:</label>
           <input
             type="text"
             name="lastName"
@@ -159,9 +152,6 @@ const CheckoutForm = () => {
       </div>
       <div>
         <button type="submit" className="w-2/5 py-2 mr-4 border border-solid border-black bg-jenyfPrimaryBrand font-semibold">Confirm</button>
-        <button type="button" onClick={handleCancel} className="w-2/5 py-2  border border-solid border-black bg-jenyfNeutralLight">
-          Cancel
-        </button>
       </div>
     </form>
   );
