@@ -25,13 +25,12 @@ const Cart = ({ showControls = true }) => {
             <div className="flex flex-row justify-between items-center">
               {showControls && (
                 <div>
-                  <button onClick={() => removeFromCart(cartItem.id)} className="border border-solid border-black w-8 mr-2 mt-2 mb-4">-</button>
-                  <button onClick={() => addToCart(cartItem)} className="border border-solid border-black w-8">+</button>
+                  <button onClick={() => removeFromCart(cartItem.id)} className="border border-solid border-black py-0 md:py-1 min-w-8 md:min-w-12 mr-2 mt-2 mb-4">-</button>
+                  <button onClick={() => addToCart(cartItem)} className="border border-solid border-black py-0 md:py-1 min-w-8 md:min-w-12">+</button>
                 </div>
               )}
               <div className="m-1 flex flex-row text-xs">
-                <p className="text-xs">{cartItem.price}</p>
-                <p className="text-xs"> SEK</p>
+                <p className="text-xs">{cartItem.price} SEK</p>
               </div>
             </div>
           </div>
