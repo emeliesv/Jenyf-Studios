@@ -8,11 +8,12 @@
   }
 }
 
+/* 
 @layer components {
   button {
     @apply border border-solid border-black py-2 font-semibold text-sm min-w-40;
   }
-}
+} */
 
 @layer utilities {
   .text-xxs {
