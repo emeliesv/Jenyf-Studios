@@ -27,7 +27,7 @@ const ProductList = ({ selectedCategory }) => {
 
   return (
     <>
-      <fieldset className=" border">
+      <fieldset className="">
         <legend>Select Category</legend>
         <select
           value={selectedCategory || ""}
