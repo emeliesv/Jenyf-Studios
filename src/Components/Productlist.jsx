@@ -41,7 +41,7 @@ const ProductList = ({ selectedCategory }) => {
           <option value={`electronics`}>Electronics</option>
         </select>
       </fieldset>
-      <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 xs:grid-cols-1">
+      <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 xs:grid-cols-1">
         {filteredData.length > 0 ? (
           filteredData
             .slice(page * 4 - 4, page * 4)
