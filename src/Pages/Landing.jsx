@@ -31,7 +31,7 @@ const Landing = () => {
   });
 
   return (
-    <main className="lg:mx-10 mt-20 md:mx-none sm:mx-none pb-40">
+    <main className="lg:mx-10 mt-20 md:mx-none sm:mx-none">
       <div className="relative">
         <img
           src={hero2}

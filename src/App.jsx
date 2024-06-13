@@ -26,22 +26,27 @@ function App() {
       <CartProvider>
         <ProductProvider>
           <BrowserRouter>
-            <Header />
-
-            <Breadcrumbs />
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/products/:productTitle" element={<ProductInfo />} />
-              <Route path="/products" element={<AllProducts />} />
-              <Route
-                path="/products/category/:category"
-                element={<AllProducts />}
-              />
-              <Route path="/confirmation" element={<Confirmation />} />
-            </Routes>
-
-            <Footer />
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">
+                <Breadcrumbs />
+                <Routes>
+                  <Route path="/" element={<Landing />} />
+                  <Route path="/checkout" element={<Checkout />} />
+                  <Route
+                    path="/products/:productTitle"
+                    element={<ProductInfo />}
+                  />
+                  <Route path="/products" element={<AllProducts />} />
+                  <Route
+                    path="/products/category/:category"
+                    element={<AllProducts />}
+                  />
+                  <Route path="/confirmation" element={<Confirmation />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
           </BrowserRouter>
         </ProductProvider>
       </CartProvider>
