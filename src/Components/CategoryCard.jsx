@@ -18,16 +18,13 @@ const CategoryCard = ({ category, image }) => {
           <h3 className="text-lg">{category}</h3>
         </div>
 
-        <button className="mt-2 bg-white text-black text-xxs">
-          Shop Now
-        </button>
+        <button className="mt-2 bg-white text-black text-xs">Shop Now</button>
       </div>
     </div>
   );
 };
 
 export default CategoryCard;
-
 
 {
   /* <span className="w-80 p-4 bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">

@@ -31,7 +31,7 @@ const Landing = () => {
   });
 
   return (
-    <main className="lg:mx-10 mt-20 md:mx-none sm:mx-none pb-40">
+    <section className="lg:mx-10 mt-20 md:mx-none sm:mx-none pb-16">
       <div className="relative h-96">
         <img
           src={hero2}
@@ -39,7 +39,7 @@ const Landing = () => {
           className="w-full h-full object-cover object-[center_top_20%]"
         ></img>
         <div></div>
-        <h1 className="absolute top-1/4 left-1/2 transform -translate-x-1/2 text-white text-3xl sm:text-4xl">
+        <h1 className="absolute top-1/4 left-1/2 transform -translate-x-1/2 text-white text-2xl sm:text-4xl">
           Hello fall
         </h1>
         <Link to="/products">
@@ -48,10 +48,10 @@ const Landing = () => {
           </button>
         </Link>
       </div>
-      <h1 className="text-center font-black pt-10 pb-4 lg:text-xl md:text-lg sm:text-base">
+      <h2 className="text-center font-black pt-10 pb-4 lg:text-xl md:text-lg sm:text-base">
         Fall favorites are here!
-      </h1>
-      <p className="text-center pt-4 pb-10 px-24 lg:text-base md:text-sm sm:text-xs">
+      </h2>
+      <p className="pt-4 pb-10 px-16 lg:text-base md:text-sm sm:text-xs">
         Discover the latest trends of the season with our wide range of men's
         and women's clothing, perfect for keeping you both warm and stylish
         during the cooler months. Refresh your wardrobe with everything from
@@ -78,7 +78,7 @@ const Landing = () => {
             );
           })}
       </div>
-    </main>
+    </section>
   );
 };
 
