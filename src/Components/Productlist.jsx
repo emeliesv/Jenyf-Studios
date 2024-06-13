@@ -2,21 +2,13 @@ import { useProducts } from "../Context/ProductContext";
 import ProductCard from "./ProductCard";
 import { useNavigate } from "react-router-dom";
 import { Pagination } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { Pagination } from "@mui/material";
-import { useState } from "react";
 
-const ProductList = ({ selectedCategory }) => {
 const ProductList = ({ selectedCategory }) => {
   const { data, isLoading, isError } = useProducts();
-  const navigate = useNavigate();
-  const [page, setPage] = useState(1);
+
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
 
-  const handlePageChange = (event, value) => {
-    setPage(value);
-  };
   const handlePageChange = (event, value) => {
     setPage(value);
   };
@@ -43,8 +35,7 @@ const ProductList = ({ selectedCategory }) => {
         <select
           className="w-full sm:w-1/4 py-2 pl-3 pr-10 text-base border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           value={selectedCategory || ""}
-          onChange={handleCategoryChange}
-        >
+          onChange={handleCategoryChange}>
           <option value={""}>Select a category</option>
           <option value={`men's clothing`}>Men</option>
           <option value={`women's clothing`}>Women</option>
@@ -69,7 +60,5 @@ const ProductList = ({ selectedCategory }) => {
     </>
   );
 };
-
-export default ProductList;
 
 export default ProductList;
