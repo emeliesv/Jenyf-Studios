@@ -2,13 +2,21 @@ import { useProducts } from "../Context/ProductContext";
 import ProductCard from "./ProductCard";
 import { useNavigate } from "react-router-dom";
 import { Pagination } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Pagination } from "@mui/material";
 import { useState } from "react";
 
+const ProductList = ({ selectedCategory }) => {
 const ProductList = ({ selectedCategory }) => {
   const { data, isLoading, isError } = useProducts();
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
+  const [page, setPage] = useState(1);
 
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
   const handlePageChange = (event, value) => {
     setPage(value);
   };
@@ -61,5 +69,7 @@ const ProductList = ({ selectedCategory }) => {
     </>
   );
 };
+
+export default ProductList;
 
 export default ProductList;
