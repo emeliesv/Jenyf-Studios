@@ -29,70 +29,65 @@ const ProductCard = ({ product }) => {
   };
 
   const urlSafeTitle = title.replace(/\s+/g, "-").toLowerCase();
-  const truncatedDescription = description.split(" ").slice(0, 10).join(" ");
-
+  /*   const truncatedDescription = description.split(" ").slice(0, 10).join(" ");
+   */
   return (
-    <div className="flex flex-col bg-white shadow-lg hover:shadow-2xl p-8">
-      <div className="h-full">
-        <div className="h-48 py-4">
-          <Link to={`/products/${urlSafeTitle}`}>
+    <Link to={`/products/${urlSafeTitle}`}>
+      <div className="flex flex-col items-center bg-white shadow-lg hover:shadow-2xl p-8 h-full">
+        <div
+          className="h-full"
+          onClick={() => localStorage.setItem("lastClickItem", product.id)}
+        >
+          <div className="h-48 py-4">
             <img
               src={image}
               alt={title}
               className="object-contain object-center w-full h-full "
             />
-          </Link>
+          </div>
+          <div>
+            <h5 className="text-md font-medium text-jenyfPrimaryText min-h-20">
+              {title}
+            </h5>
+            {RatingReview()}
+            <p>{rating.count + " reviews"}</p>
+            <p className="font-semibold">{price} SEK</p>
+            {/* <p className="h-20 text-sm text-jenyfPrimaryText overflow-ellipsis">
+              {truncatedDescription}...
+            </p> */}
+          </div>
         </div>
-        <div>
-          <h5 className="text-md font-medium text-jenyfPrimaryText min-h-20">
-            {title}
-          </h5>
-          {RatingReview()}
-          <p>{rating.count + " reviews"}</p>
-          <p>{price}</p>
-          <p className="h-20 text-sm text-jenyfPrimaryText overflow-ellipsis">
-            {truncatedDescription}...
-          </p>
-        </div>
-      </div>
 
-      <div className="flex flex-col lg:hidden">
-        <button
-          type="button"
-          className="w-full bg-jenyfPrimaryBrand"
-          onClick={() => addToCart(product)}
-        >
-          Add To Cart
-        </button>
-        <Link to={`/products/${urlSafeTitle}`}>
+        <div className="flex flex-col lg:hidden">
           <button
             type="button"
-            onClick={() => localStorage.setItem("lastClickItem", product.id)}
-            className="w-full my-4"
+            className="w-full bg-jenyfPrimaryBrand"
+            onClick={() => addToCart(product)}
           >
-            Details
+            Add To Cart
           </button>
-        </Link>
-      </div>
+          {/* <Link to={`/products/${urlSafeTitle}`}>
+            <button
+              type="button"
+              onClick={() => localStorage.setItem("lastClickItem", product.id)}
+              className="w-full my-4"
+            >
+              Details
+            </button>
+          </Link> */}
+        </div>
 
-      <div className="hidden lg:flex flex-row m-4">
-        <Link to={`/products/${product.id}`}>
+        <div className="hidden lg:flex flex-col items-center">
           <button
             type="button"
-            onClick={() => localStorage.setItem("lastClickItem", product.id)}
+            className="bg-jenyfPrimaryBrand min-w-24 mt-3"
+            onClick={() => addToCart(product)}
           >
-            Details
+            Add To Cart
           </button>
-        </Link>
-        <button
-          type="button"
-          className="bg-jenyfPrimaryBrand"
-          onClick={() => addToCart(product)}
-        >
-          Add To Cart
-        </button>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
