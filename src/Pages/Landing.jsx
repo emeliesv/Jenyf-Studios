@@ -31,12 +31,17 @@ const Landing = () => {
   });
 
   return (
-    <main className="lg:mx-10 mt-20 md:mx-none sm:mx-none">
-      <div className="relative">
+    <main className="lg:mx-10 mt-20 md:mx-none sm:mx-none pb-40">
+      <div className="relative h-96">
         <img
           src={hero2}
           alt="Three people sitting on the grass laughing"
-          className="w-full h-96 object-cover object-[center_top_20%]"></img>
+          className="w-full h-full object-cover object-[center_top_20%]"
+        ></img>
+        <div></div>
+        <h1 className="absolute top-1/4 left-1/2 transform -translate-x-1/2 text-white text-3xl sm:text-4xl">
+          Hello fall
+        </h1>
         <Link to="/products">
           <button className="bg-jenyfNeutralLight absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             Shop all products
@@ -62,7 +67,8 @@ const Landing = () => {
                 <Link
                   to={`/products/category/${categoryImage.category}`}
                   key={categoryImage.category}
-                  className="flex items-center justify-center">
+                  className="flex items-center justify-center"
+                >
                   <CategoryCard
                     category={categoryImage.category}
                     image={categoryImage.image}

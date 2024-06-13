@@ -54,7 +54,7 @@ const ProductList = ({ selectedCategory }) => {
           <p>No products found for this category</p>
         )}
       </div>
-      <div>
+      <div className="flex justify-center">
         <Pagination count={5} page={page} onChange={handlePageChange} />
       </div>
     </>
