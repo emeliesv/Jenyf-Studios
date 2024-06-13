@@ -27,23 +27,23 @@ const ProductCard = ({ product }) => {
     );
   };
 
+  const urlSafeTitle = title.replace(/\s+/g, "-").toLowerCase();
   const truncatedDescription = description.split(" ").slice(0, 10).join(" ");
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-sm mx-auto tra hover:shadow-2xl transition duration-500 flex flex-col justify-between items-center transform hover:scale-105">
-      <Link to={`/product/${product.id}`}>
-        <div className="overflow-hidden h-48 py-4 bg-white">
-          <img
-            className="object-contain object-center w-full h-full "
-            src={image}
-            alt={title}
-          />
-        </div>
-      </Link>
-
+    <div className="bg-white shadow-lg overflow-hidden hover:shadow-2xl row-span-1">
+      {/* <Link to={`/products/${urlSafeTitle}`}> */}
+      <div className="overflow-hidden h-48 py-4 bg-white">
+        <img
+          className="object-contain object-center w-full h-full "
+          src={image}
+          alt={title}
+        />
+      </div>
+      {/* 
+      </Link> */}
       <div className="p-4">
-        <h5 className="text-lg font-medium text-gray-800 mb-2">{title}</h5>
-
+        <h5 className="text-lg font-medium text-gray-800 mb-2 p-4">{title}</h5>
         <div className="mb-2 flex justify-between items-center">
           <RatingReview />
           <span className="text-gray-600">{rating.count} reviews</span>
@@ -55,20 +55,36 @@ const ProductCard = ({ product }) => {
           {truncatedDescription}...
         </p>
 
-        <div className="flex justify-between">
-          <Link to={`/product/${product.id}`}>
+        <div className="flex flex-col lg:hidden">
+          <button
+            type="button"
+            className="w-full"
+            onClick={() => addToCart(product)}
+          >
+            Add To Cart
+          </button>
+          <Link to={`/products/${urlSafeTitle}`}>
             <button
               type="button"
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border-2 border-black rounded-full hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 transition duration-300"
+              onClick={() => localStorage.setItem("lastClickItem", product.id)}
+              className="w-full my-4"
             >
               Details
             </button>
           </Link>
-          <button
-            type="button"
-            className=" bg-[#BFC1B6] px-4 py-2 text-sm font-medium text-black rounded-full hover:bg-slate-400 focus:ring-4 focus:outline-none focus:ring-indigo-300 transition duration-300"
-            onClick={() => addToCart(product)}
-          >
+        </div>
+
+        <div className="hidden lg:flex lg:flex-row">
+          <Link to={`/products/${product.id}`}>
+            <button
+              type="button"
+              onClick={() => localStorage.setItem("lastClickItem", product.id)}
+              className=""
+            >
+              Details
+            </button>
+          </Link>
+          <button type="button" className="" onClick={() => addToCart(product)}>
             Add To Cart
           </button>
         </div>
