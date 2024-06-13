@@ -3,20 +3,21 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 
 const ProductCard = ({ product }) => {
-  const { title, price, description, image, rating } = product;
+  const { title, price, description, category, image, rating } = product;
   const [ratingOfCurrentProduct, setRating] = useState(rating.rate);
   const { addToCart } = useContext(CartContext);
 
   const RatingReview = () => {
     return (
-      <div className="flex items-center">
+      <div>
         {[1, 2, 3, 4, 5].map((star) => (
           <span
             key={star}
+            className="star"
             style={{
               cursor: "pointer",
               color: ratingOfCurrentProduct >= star ? "gold" : "gray",
-              fontSize: "1.25rem",
+              fontSize: `35px`,
             }}
             onClick={() => setRating(star)}
           >
@@ -27,51 +28,69 @@ const ProductCard = ({ product }) => {
     );
   };
 
+  const urlSafeTitle = title.replace(/\s+/g, "-").toLowerCase();
   const truncatedDescription = description.split(" ").slice(0, 10).join(" ");
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-sm mx-auto tra hover:shadow-2xl transition duration-500 flex flex-col justify-between items-center transform hover:scale-105">
-      <Link to={`/product/${product.id}`}>
-        <div className="overflow-hidden h-48 py-4 bg-white">
-          <img
-            className="object-contain object-center w-full h-full "
-            src={image}
-            alt={title}
-          />
-        </div>
-      </Link>
-
-      <div className="p-4">
-        <h5 className="text-lg font-medium text-gray-800 mb-2">{title}</h5>
-
-        <div className="mb-2 flex justify-between items-center">
-          <RatingReview />
-          <span className="text-gray-600">{rating.count} reviews</span>
-        </div>
-
-        <span className="text-lg font-semibold text-gray-900">${price}</span>
-
-        <p className="text-sm text-gray-700 mt-2 mb-4 max-h-12 overflow-ellipsis">
-          {truncatedDescription}...
-        </p>
-
-        <div className="flex justify-between">
-          <Link to={`/products/${product.id}`}>
-            <button
-              type="button"
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border-2 border-black rounded-full hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 transition duration-300"
-            >
-              Details
-            </button>
+    <div className="flex flex-col bg-white shadow-lg hover:shadow-2xl p-8">
+      <div className="h-full">
+        <div className="h-48 py-4">
+          <Link to={`/products/${urlSafeTitle}`}>
+            <img
+              src={image}
+              alt={title}
+              className="object-contain object-center w-full h-full "
+            />
           </Link>
+        </div>
+        <div>
+          <h5 className="text-md font-medium text-jenyfPrimaryText min-h-20">
+            {title}
+          </h5>
+          {RatingReview()}
+          <p>{rating.count + " reviews"}</p>
+          <p>{price}</p>
+          <p className="h-20 text-sm text-jenyfPrimaryText overflow-ellipsis">
+            {truncatedDescription}...
+          </p>
+        </div>
+      </div>
+
+      <div className="flex flex-col lg:hidden">
+        <button
+          type="button"
+          className="w-full bg-jenyfPrimaryBrand"
+          onClick={() => addToCart(product)}
+        >
+          Add To Cart
+        </button>
+        <Link to={`/products/${urlSafeTitle}`}>
           <button
             type="button"
-            className=" bg-[#BFC1B6] px-4 py-2 text-sm font-medium text-black rounded-full hover:bg-slate-400 focus:ring-4 focus:outline-none focus:ring-indigo-300 transition duration-300"
-            onClick={() => addToCart(product)}
+            onClick={() => localStorage.setItem("lastClickItem", product.id)}
+            className="w-full my-4"
           >
-            Add To Cart
+            Details
           </button>
-        </div>
+        </Link>
+      </div>
+
+      <div className="hidden lg:flex flex-row m-4">
+        <Link to={`/products/${product.id}`}>
+          <button
+            type="button"
+            onClick={() => localStorage.setItem("lastClickItem", product.id)}
+          >
+            Details
+          </button>
+        </Link>
+        <button
+          type="button"
+          className="bg-jenyfPrimaryBrand"
+          onClick={() => addToCart(product)}
+        >
+          Add To Cart
+        </button>
       </div>
     </div>
   );
