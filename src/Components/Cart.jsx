@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 
 const Cart = ({ showControls }) => {
-  const { cart, removeFromCart, addToCart, calculateTotalSum } =
+  const { cart, removeFromCart, addToCart, calculateTotalSum, clearCart } =
     useContext(CartContext);
 
   const handleCancel = () => {
