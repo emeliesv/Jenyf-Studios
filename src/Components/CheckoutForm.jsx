@@ -15,7 +15,6 @@ const CheckoutForm = () => {
     postalCode: "",
     city: "",
   });
-  const { clearCart } = useContext(CartContext);
   const [selectedImage, setSelectedImage] = useState(null);
 
   const navigate = useNavigate();
@@ -38,7 +37,10 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col w-full sm:mx-2 lg:w-1/2 lg:mx-4">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col w-full sm:mx-2 lg:w-1/2 lg:mx-4"
+    >
       <div className="flex justify-between mb-2 flex-col w-full md:flex-row">
         <div className="flex flex-col w-full lg:w-1/2">
           <label className="text-xs mt-3 md:mt-0 mb-2">First Name:</label>
@@ -116,42 +118,51 @@ const CheckoutForm = () => {
             src={payment1}
             alt="payment1"
             onClick={() => handleClick(1)}
-            className={`w-auto h-10 object-fit mr-2 mt-2 hover:border hover:border-black ${selectedImage === 1
-              ? "border border-black"
-              : "border border-transparent"
-              } cursor-pointer`}
+            className={`w-auto h-10 object-fit mr-2 mt-2 hover:border hover:border-black ${
+              selectedImage === 1
+                ? "border border-black"
+                : "border border-transparent"
+            } cursor-pointer`}
           />
           <img
             src={payment2}
             alt="payment2"
             onClick={() => handleClick(2)}
-            className={`w-auto h-10 object-fit m-2 hover:border hover:border-black ${selectedImage === 2
-              ? "border border-black"
-              : "border border-transparent"
-              } cursor-pointer`}
+            className={`w-auto h-10 object-fit m-2 hover:border hover:border-black ${
+              selectedImage === 2
+                ? "border border-black"
+                : "border border-transparent"
+            } cursor-pointer`}
           />
           <img
             src={payment3}
             alt="payment3"
             onClick={() => handleClick(3)}
-            className={`w-auto h-10 object-fit m-2 hover:border hover:border-black ${selectedImage === 3
-              ? "border border-black"
-              : "border border-transparent"
-              } cursor-pointer`}
+            className={`w-auto h-10 object-fit m-2 hover:border hover:border-black ${
+              selectedImage === 3
+                ? "border border-black"
+                : "border border-transparent"
+            } cursor-pointer`}
           />
           <img
             src={payment4}
             alt="payment4"
             onClick={() => handleClick(4)}
-            className={`w-auto h-10 object-fit m-2 hover:border hover:border-black ${selectedImage === 4
-              ? "border border-black"
-              : "border border-transparent"
-              } cursor-pointer`}
+            className={`w-auto h-10 object-fit m-2 hover:border hover:border-black ${
+              selectedImage === 4
+                ? "border border-black"
+                : "border border-transparent"
+            } cursor-pointer`}
           />
         </div>
       </div>
       <div>
-        <button type="submit" className="w-full py-2 mr-4 border border-solid border-black bg-jenyfPrimaryBrand font-semibold">Confirm</button>
+        <button
+          type="submit"
+          className="w-full py-2 mr-4 border border-solid border-black bg-jenyfPrimaryBrand font-semibold"
+        >
+          Confirm
+        </button>
       </div>
     </form>
   );

@@ -2,10 +2,10 @@ import { useProducts } from "../Context/ProductContext";
 import ProductCard from "./ProductCard";
 import { useNavigate } from "react-router-dom";
 import { Pagination } from "@mui/material";
+import { useState } from "react";
 
 const ProductList = ({ selectedCategory }) => {
   const { data, isLoading, isError } = useProducts();
-
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
 

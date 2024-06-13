@@ -56,7 +56,7 @@ const ProductCard = ({ product }) => {
         </p>
 
         <div className="flex justify-between">
-          <Link to={`/product/${product.id}`}>
+          <Link to={`/products/${product.id}`}>
             <button
               type="button"
               className="px-4 py-2 text-sm font-medium text-gray-700 bg-transparent border-2 border-black rounded-full hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300 transition duration-300"
