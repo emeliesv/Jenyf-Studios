@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 
 const Cart = ({ showControls }) => {
-  const { cart, removeFromCart, addToCart, calculateTotalSum } =
+  const { cart, removeFromCart, addToCart, calculateTotalSum, clearCart } =
     useContext(CartContext);
 
   const handleCancel = () => {
@@ -33,19 +33,18 @@ const Cart = ({ showControls }) => {
                 <div>
                   <button
                     onClick={() => removeFromCart(cartItem.id)}
-                    className="border border-solid border-black py-0 md:py-1 min-w-8 md:min-w-12 mr-2 mt-2 mb-4"
-                  >
+                    className="border border-solid border-black py-0 md:py-1 min-w-8 md:min-w-12 mr-2 mt-2 mb-4">
                     -
                   </button>
                   <button
                     onClick={() => addToCart(cartItem)}
-                    className="border border-solid border-black py-0 md:py-1 min-w-8 md:min-w-12"
-                  >
+                    className="border border-solid border-black py-0 md:py-1 min-w-8 md:min-w-12">
                     +
                   </button>
                 </div>
               )}
               <div className="m-1 flex flex-row text-xs">
+                {cartItem.amount > 1 && <p>{cartItem.amount} x&nbsp;</p>}
                 <p className="text-xs">{cartItem.price} SEK</p>
               </div>
             </div>
@@ -57,8 +56,7 @@ const Cart = ({ showControls }) => {
           <button
             type="button"
             onClick={handleCancel}
-            className="w-2/5 p-4 ml-2 text-xxs text-start md:text-xs font-medium underline border-none"
-          >
+            className="w-2/5 p-4 ml-2 text-xxs text-start md:text-xs font-medium underline border-none">
             Empty shopping cart
           </button>
         )}
