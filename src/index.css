@@ -4,10 +4,9 @@
 
 @layer base {
   body {
-    @apply font-sans text-jenyfPrimaryText bg-jenyfPrimaryBackground relative min-h-screen;
+    @apply font-sans text-jenyfPrimaryText bg-jenyfPrimaryBackground relative h-full m-0;
   }
 }
-
 
 @layer components {
   button {
