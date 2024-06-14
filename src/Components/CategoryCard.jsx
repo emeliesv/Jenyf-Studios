@@ -25,10 +25,3 @@ const CategoryCard = ({ category, image }) => {
 };
 
 export default CategoryCard;
-
-{
-  /* <span className="w-80 p-4 bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
-  <img src={image} className="h-60 w-full p-4 object-contain " />
-  <h3 className=" text-center p-4 text-base">{category}</h3>
-</span> */
-}
