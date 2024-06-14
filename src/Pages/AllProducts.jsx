@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom";
 const AllProducts = () => {
   const { category } = useParams();
 
-  console.log("categoryURL:", category);
-
   return (
     <section className="">
       <ProductList selectedCategory={category} />

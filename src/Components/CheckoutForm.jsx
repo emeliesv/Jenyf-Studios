@@ -159,7 +159,7 @@ const CheckoutForm = () => {
       <div>
         <button
           type="submit"
-          className="w-full py-2 mr-4 border border-solid border-black bg-jenyfPrimaryBrand font-semibold"
+          className="w-full py-2 mr-4 border border-solid border-black bg-jenyfPrimaryBrand hover:bg-jenyfPrimaryBrandHover font-semibold"
         >
           Confirm
         </button>

@@ -8,6 +8,7 @@ export default {
       },
       backgroundColor: {
         jenyfPrimaryBrand: "#E2E3D6",
+        jenyfPrimaryBrandHover: "#F4F5F0",
         jenyfPrimaryBackground: "#F6F6EF",
         jenyfNeutralLight: "#FFFFFF",
         jenyfNeutralDark: "#3C3B36",
@@ -17,8 +18,8 @@ export default {
         jenyfPrimaryText: "#3C3B36",
       },
       fontSize: {
-        'xxs': '0.625rem', // 10px
-        'xxxs': '0.5rem',  // 8px
+        xxs: "0.625rem", // 10px
+        xxxs: "0.5rem", // 8px
       },
     },
   },

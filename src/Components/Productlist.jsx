@@ -11,7 +11,13 @@ const ProductList = ({ selectedCategory }) => {
   const [page, setPage] = useState(1);
 
   const handlePageChange = (event, value) => {
+    console.log(event);
+    console.log("pagevalue", value);
     setPage(value);
+  };
+
+  const pageCount = () => {
+    return Math.ceil(filteredData.length / 4);
   };
 
   if (isError) return <h1>Failed to fetch product</h1>;
@@ -30,6 +36,8 @@ const ProductList = ({ selectedCategory }) => {
     }
   };
 
+  const productsToDisplay = filteredData.slice(page * 4 - 4, page * 4);
+
   return (
     <>
       <fieldset className=" mb-4">
@@ -47,17 +55,20 @@ const ProductList = ({ selectedCategory }) => {
       </fieldset>
       <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1">
         {filteredData.length > 0 ? (
-          filteredData
-            .slice(page * 4 - 4, page * 4)
-            .map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))
+          productsToDisplay.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))
         ) : (
           <p>No products found for this category</p>
         )}
       </div>
       <div className="flex justify-center mb-6">
-        <Pagination count={5} page={page} onChange={handlePageChange} />
+        <Pagination
+          count={pageCount()}
+          page={page}
+          onChange={handlePageChange}
+          className="m-6"
+        />
       </div>
     </>
   );

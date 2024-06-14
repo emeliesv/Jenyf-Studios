@@ -63,10 +63,9 @@ const Landing = () => {
         {categoryWithImage &&
           categoryWithImage.map((categoryImage) => {
             return (
-              <>
+              <div key={categoryImage.category}>
                 <Link
                   to={`/products/category/${categoryImage.category}`}
-                  key={categoryImage.category}
                   className="flex items-center justify-center"
                 >
                   <CategoryCard
@@ -74,7 +73,7 @@ const Landing = () => {
                     image={categoryImage.image}
                   />
                 </Link>
-              </>
+              </div>
             );
           })}
       </div>
