@@ -53,7 +53,7 @@ const ProductList = ({ selectedCategory }) => {
           <option value={`electronics`}>Electronics</option>
         </select>
       </fieldset>
-      <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1">
+      <div className="grid gap-3 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 mx-4">
         {filteredData.length > 0 ? (
           productsToDisplay.map((product) => (
             <ProductCard key={product.id} product={product} />
