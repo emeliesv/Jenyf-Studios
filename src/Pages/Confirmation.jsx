@@ -27,7 +27,7 @@ const Confirmation = () => {
       <h3 className="text-md m-2 text-center">
         Thank you for ordering from JENYF STUDIOS
       </h3>
-      <div className="flex flex-col items-center bg-jenyfPrimaryBackground border border-black my-10 mb-40 max-w-full pt-6">
+      <div className="flex flex-col items-center bg-jenyfNeutralLight max-w-lg my-10 mb-40 pt-6">
         {formData && (
           <div>
             <h4 className="font-semibold">Shipping Address</h4>
@@ -41,13 +41,15 @@ const Confirmation = () => {
             <p>{formData.country}</p>
           </div>
         )}
-
-        <Cart showControls={false} />
+        <div className="border-black border-y m-6">
+          <Cart showControls={false} />
+        </div>
 
         <button
           className="mx-6 mb-28"
           type="button"
-          onClick={handleContinueShopping}>
+          onClick={handleContinueShopping}
+        >
           Continue Shopping
         </button>
       </div>

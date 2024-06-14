@@ -28,12 +28,15 @@ const ProductCard = ({ product }) => {
     );
   };
 
-  const urlSafeTitle = title.replace(/\s+/g, "-").toLowerCase();
+  const urlSafeTitle = title
+    .replace(/[^a-z0-9]+/gi, "-")
+    .replace(/-+$/, "")
+    .toLowerCase();
   /*   const truncatedDescription = description.split(" ").slice(0, 10).join(" ");
    */
   return (
-    <Link to={`/products/${urlSafeTitle}`}>
-      <div className="flex flex-col items-center bg-white shadow-lg hover:shadow-2xl p-8 h-full">
+    <div className="flex flex-col items-center bg-white shadow-lg hover:shadow-2xl p-8 h-full">
+      <Link to={`/products/${urlSafeTitle}`}>
         <div
           className="h-full"
           onClick={() => localStorage.setItem("lastClickItem", product.id)}
@@ -52,42 +55,30 @@ const ProductCard = ({ product }) => {
             {RatingReview()}
             <p>{rating.count + " reviews"}</p>
             <p className="font-semibold">{price} SEK</p>
-            {/* <p className="h-20 text-sm text-jenyfPrimaryText overflow-ellipsis">
-              {truncatedDescription}...
-            </p> */}
           </div>
         </div>
+      </Link>
 
-        <div className="flex flex-col lg:hidden">
-          <button
-            type="button"
-            className="w-full bg-jenyfPrimaryBrand"
-            onClick={() => addToCart(product)}
-          >
-            Add To Cart
-          </button>
-          {/* <Link to={`/products/${urlSafeTitle}`}>
-            <button
-              type="button"
-              onClick={() => localStorage.setItem("lastClickItem", product.id)}
-              className="w-full my-4"
-            >
-              Details
-            </button>
-          </Link> */}
-        </div>
-
-        <div className="hidden lg:flex flex-col items-center">
-          <button
-            type="button"
-            className="bg-jenyfPrimaryBrand min-w-24 mt-3"
-            onClick={() => addToCart(product)}
-          >
-            Add To Cart
-          </button>
-        </div>
+      <div className="flex flex-col lg:hidden">
+        <button
+          type="button"
+          className="w-full bg-jenyfPrimaryBrand"
+          onClick={() => addToCart(product)}
+        >
+          Add To Cart
+        </button>
       </div>
-    </Link>
+
+      <div className="hidden lg:flex flex-col items-center">
+        <button
+          type="button"
+          className="bg-jenyfPrimaryBrand hover:bg-jenyfPrimaryBrandHover min-w-24 mt-3"
+          onClick={() => addToCart(product)}
+        >
+          Add To Cart
+        </button>
+      </div>
+    </div>
   );
 };
 
