@@ -1,83 +1,94 @@
-/* Single product information */
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
-import { useContext } from "react";
 
 const ProductCard = ({ product }) => {
-    const { title, price, description, category, image, rating } = product
-    const [ratingOfCurrentProduct, setRating] = useState(rating.rate)
-    const { addToCart } = useContext(CartContext);
+  const { title, price, description, category, image, rating } = product;
+  const [ratingOfCurrentProduct, setRating] = useState(rating.rate);
+  const { addToCart } = useContext(CartContext);
 
-    const RatingReview = () => {
-        return (
-            <div>
-                {[1, 2, 3, 4, 5].map((key, star) => {
-                    return (
-                        <span key={key}
-                            className='start'
-                            style={{
-                                cursor: 'pointer',
-                                color: ratingOfCurrentProduct >= star ? 'gold' : 'gray',
-                                fontSize: `35px`,
-                            }}
-                            onClick={() => {
-                                setRating(star)
-                            }}
-                        >
-                            {' '}
-                            ★{' '}
-                        </span>
-                    )
-                })}
-            </div>
-        )
-    }
-
-
+  const RatingReview = () => {
     return (
-        <div
-            className="container mx-auto max-w-sm  h-full w-full bg-[#3c3b36] rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-70 border border-gray-100
-            flex flex-col justify-between ">
-            <div className=" overflow-hidden rounded-lg bg-white grid items-center ">
-                <img
-                    className="transition duration-500 ease-in-out transform hover:scale-90 h-96"
-                    src={image}
-                    alt={title} />
-            </div>
-            <div className="p-6 container flex flex-col">
-                <h5
-                    className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-                    {title}
+      <div>
+        {[1, 2, 3, 4, 5].map((star) => (
+          <span
+            key={star}
+            className="star"
+            style={{
+              cursor: "pointer",
+              color: ratingOfCurrentProduct >= star ? "gold" : "gray",
+              fontSize: `35px`,
+            }}
+            onClick={() => setRating(star)}
+          >
+            ★
+          </span>
+        ))}
+      </div>
+    );
+  };
 
-                </h5>
-                <h6 className="mb-4 font-medium text-m text-neutral-600 dark:text-neutral-200">
-                    {RatingReview(ratingOfCurrentProduct)}
-                    {rating.count + " reviews"}
-                    <br />
-                    {price}
-                </h6>
-                <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200 h-20 overflow-hidden mb-12 truncate">
-                    {description}
-                </p>
-                <div
-                    className="flex justify-between"
-                >
-                    <button
-                        type="button"
-                        className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800 transition duration-500 ease-in-out" onClick={() => addToCart(product)}>
-                        Add To Cart
-                    </button>
-                    <button
-                        type="button"
-                        className="inline-flex-end items-center px-3 py-2 text-sm font-medium text-center text-white bg-rose-700 rounded-lg hover:bg-rose-800 focus:ring-4 focus:outline-none focus:ring-rose-300 dark:bg-rose-600 dark:hover:bg-rose-700 dark:focus:ring-rose-800 transition duration-500 ease-in-out transform hover:scale-100" >
-                        <Link to={`/products/id/${product.id}`}>Details</Link>
-                    </button>
-                </div>
-            </div>
+  const urlSafeTitle = title.replace(/\s+/g, "-").toLowerCase();
+  /*   const truncatedDescription = description.split(" ").slice(0, 10).join(" ");
+   */
+  return (
+    <Link to={`/products/${urlSafeTitle}`}>
+      <div className="flex flex-col items-center bg-white shadow-lg hover:shadow-2xl p-8 h-full">
+        <div
+          className="h-full"
+          onClick={() => localStorage.setItem("lastClickItem", product.id)}
+        >
+          <div className="h-48 py-4">
+            <img
+              src={image}
+              alt={title}
+              className="object-contain object-center w-full h-full "
+            />
+          </div>
+          <div>
+            <h5 className="text-md font-medium text-jenyfPrimaryText min-h-20">
+              {title}
+            </h5>
+            {RatingReview()}
+            <p>{rating.count + " reviews"}</p>
+            <p className="font-semibold">{price} SEK</p>
+            {/* <p className="h-20 text-sm text-jenyfPrimaryText overflow-ellipsis">
+              {truncatedDescription}...
+            </p> */}
+          </div>
         </div>
 
-    )
-}
+        <div className="flex flex-col lg:hidden">
+          <button
+            type="button"
+            className="w-full bg-jenyfPrimaryBrand"
+            onClick={() => addToCart(product)}
+          >
+            Add To Cart
+          </button>
+          {/* <Link to={`/products/${urlSafeTitle}`}>
+            <button
+              type="button"
+              onClick={() => localStorage.setItem("lastClickItem", product.id)}
+              className="w-full my-4"
+            >
+              Details
+            </button>
+          </Link> */}
+        </div>
+
+        <div className="hidden lg:flex flex-col items-center">
+          <button
+            type="button"
+            className="bg-jenyfPrimaryBrand min-w-24 mt-3"
+            onClick={() => addToCart(product)}
+          >
+            Add To Cart
+          </button>
+        </div>
+      </div>
+    </Link>
+  );
+};
 
 export default ProductCard;

@@ -4,9 +4,15 @@ const Breadcrumbs = () => {
   const location = useLocation();
   const pathname = location.pathname.split("/").filter((x) => x);
 
+  if (pathname.length === 0) {
+    return null; // Don't render breadcrumbs on the home page
+  }
+
+  let breadcrumbPath = "";
+
   return (
     <nav>
-      <ol className="list-reset flex">
+      <ol className="list-reset flex ml-12 my-4">
         <li>
           <Link to="/" className="hover:underline">
             Home
@@ -14,16 +20,19 @@ const Breadcrumbs = () => {
           {pathname.length > 0 && <span className="mx-2">/</span>}
         </li>
         {pathname.map((value, index) => {
-          const to = `/${pathname.slice(0, index + 1).join("/")}`;
+          breadcrumbPath += `/${value}`;
           const isLast = index === pathname.length - 1;
-
+          if (value === "category" && pathname[index + 1]) {
+            // Include category name along with the next segment
+            return null; // Skip rendering category segment separately
+          }
           return isLast ? (
-            <li key={to} className="text-gray-500">
+            <li key={breadcrumbPath} className="text-gray-500">
               {value.charAt(0).toUpperCase() + value.slice(1)}
             </li>
           ) : (
-            <li key={to}>
-              <Link to={to} className="hover:underline">
+            <li key={breadcrumbPath}>
+              <Link to={breadcrumbPath} className="hover:underline">
                 {value.charAt(0).toUpperCase() + value.slice(1)}
               </Link>
               <span className="mx-2">/</span>

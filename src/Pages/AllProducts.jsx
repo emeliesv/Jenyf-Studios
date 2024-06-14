@@ -8,8 +8,7 @@ const AllProducts = () => {
   console.log("categoryURL:", category);
 
   return (
-    <section>
-      <h2>Our products:</h2>
+    <section className="">
       <ProductList selectedCategory={category} />
     </section>
   );

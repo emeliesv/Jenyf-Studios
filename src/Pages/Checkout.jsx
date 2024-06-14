@@ -1,14 +1,15 @@
 import Cart from "../Components/Cart";
-import { Link } from "react-router-dom";
 import CheckoutForm from "../Components/CheckoutForm";
 
 const Checkout = () => {
   return (
-    <>
-      <h2>Your shoppingcart:</h2>
-      <Cart showControls={true} />
-      <CheckoutForm />
-    </>
+    <section className="mb-10 mx-2 lg:mx-40 ">
+      <h2 className="font-semibold my-4 mx-2">YOUR SHOPPING CART:</h2>
+      <div className="flex flex-col md:flex-row">
+        <Cart showControls={true} />
+        <CheckoutForm />
+      </div>
+    </section>
   );
 };
 
