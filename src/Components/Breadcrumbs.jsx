@@ -10,6 +10,11 @@ const Breadcrumbs = () => {
 
   let breadcrumbPath = "";
 
+  const fixBreadcrumbName = (value) => {
+    let incoming = value.charAt(0).toUpperCase() + value.slice(1);
+    return incoming.replace(/[^a-z][0-9]+/gi, "-").replace(/-+$/, "");
+  };
+
   return (
     <nav>
       <ol className="list-reset flex ml-12 my-4">
@@ -28,7 +33,7 @@ const Breadcrumbs = () => {
           }
           return isLast ? (
             <li key={breadcrumbPath} className="text-gray-500">
-              {value.charAt(0).toUpperCase() + value.slice(1)}
+              {fixBreadcrumbName(value)}
             </li>
           ) : (
             <li key={breadcrumbPath}>

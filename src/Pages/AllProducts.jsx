@@ -6,7 +6,7 @@ const AllProducts = () => {
   const { category } = useParams();
 
   return (
-    <section className="">
+    <section className="mx-4">
       <ProductList selectedCategory={category} />
     </section>
   );

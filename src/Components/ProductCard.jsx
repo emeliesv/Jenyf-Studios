@@ -1,25 +1,20 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 
 const ProductCard = ({ product }) => {
-  const { title, price, description, category, image, rating } = product;
-  const [ratingOfCurrentProduct, setRating] = useState(rating.rate);
+  const { title, price, image, rating } = product;
   const { addToCart } = useContext(CartContext);
 
-  const RatingReview = () => {
+  const RatingStars = () => {
     return (
       <div>
         {[1, 2, 3, 4, 5].map((star) => (
           <span
             key={star}
-            className="star"
-            style={{
-              cursor: "pointer",
-              color: ratingOfCurrentProduct >= star ? "gold" : "gray",
-              fontSize: `35px`,
-            }}
-            onClick={() => setRating(star)}
+            className={`${
+              rating.rate >= star ? "text-amber-400" : "text-gray-500"
+            } text-2xl`}
           >
             ★
           </span>
@@ -32,10 +27,8 @@ const ProductCard = ({ product }) => {
     .replace(/[^a-z0-9]+/gi, "-")
     .replace(/-+$/, "")
     .toLowerCase();
-  /*   const truncatedDescription = description.split(" ").slice(0, 10).join(" ");
-   */
   return (
-    <div className="flex flex-col items-center bg-white shadow-lg hover:shadow-2xl p-8 h-full">
+    <article className="flex flex-col items-center bg-white shadow-lg hover:shadow-2xl p-8 h-full">
       <Link to={`/products/${urlSafeTitle}`}>
         <div
           className="h-full"
@@ -52,14 +45,14 @@ const ProductCard = ({ product }) => {
             <h5 className="text-md font-medium text-jenyfPrimaryText min-h-20">
               {title}
             </h5>
-            {RatingReview()}
+            {RatingStars()}
             <p>{rating.count + " reviews"}</p>
             <p className="font-semibold">{price} SEK</p>
           </div>
         </div>
       </Link>
 
-      <div className="flex flex-col lg:hidden">
+      <div className="flex flex-col lg:hidden w-full">
         <button
           type="button"
           className="w-full bg-jenyfPrimaryBrand"
@@ -78,7 +71,7 @@ const ProductCard = ({ product }) => {
           Add To Cart
         </button>
       </div>
-    </div>
+    </article>
   );
 };
 
