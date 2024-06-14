@@ -15,12 +15,12 @@
 }
 
 @layer utilities {
-  .text-xxs {
-    font-size: 10px;
+    .text-xxs {
+    font-size: 12px;
   }
 
   .text-xs {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .text-sm {
@@ -32,30 +32,30 @@
   }
 
   .text-lg {
-    font-size: 25px;
+    font-size: 24px;
   }
 
   .text-xl {
-    font-size: 31px;
+    font-size: 32px;
   }
 
   .text-xxl {
-    font-size: 39px;
+    font-size: 36px;
   }
 
   .text-3xl {
-    font-size: 49px;
+    font-size: 48px;
   }
 
   .text-4xl {
-    font-size: 61px;
+    font-size: 64px;
   }
 
   .text-5xl {
-    font-size: 76px;
+    font-size: 72px;
   }
 
   .text-6xl {
-    font-size: 95px;
+    font-size: 96px;
   }
 }
