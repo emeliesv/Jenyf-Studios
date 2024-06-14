@@ -68,7 +68,7 @@ const ProductCard = ({ product }) => {
       <div className="hidden lg:flex flex-col items-center">
         <button
           type="button"
-          className="bg-jenyfPrimaryBrand min-w-24 mt-3"
+          className="bg-jenyfPrimaryBrand hover:bg-jenyfPrimaryBrandHover min-w-24 mt-3"
           onClick={() => addToCart(product)}
         >
           Add To Cart
