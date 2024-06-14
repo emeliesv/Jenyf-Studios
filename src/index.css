@@ -10,12 +10,12 @@
 
 @layer components {
   button {
-    @apply border border-solid border-black py-2 font-semibold text-sm px-4;
+    @apply border border-solid border-black py-2 font-semibold text-sm px-4 hover:bg-jenyfPrimaryBrand;
   }
 }
 
 @layer utilities {
-    .text-xxs {
+  .text-xxs {
     font-size: 12px;
   }
 

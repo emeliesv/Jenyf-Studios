@@ -26,9 +26,9 @@ function App() {
       <CartProvider>
         <ProductProvider>
           <BrowserRouter>
-            <div className="flex flex-col min-h-screen">
+            <main className="flex flex-col min-h-screen">
               <Header />
-              <main className="flex-grow">
+              <div className="flex-grow">
                 <Breadcrumbs />
                 <Routes>
                   <Route path="/" element={<Landing />} />
@@ -44,9 +44,9 @@ function App() {
                   />
                   <Route path="/confirmation" element={<Confirmation />} />
                 </Routes>
-              </main>
+              </div>
               <Footer />
-            </div>
+            </main>
           </BrowserRouter>
         </ProductProvider>
       </CartProvider>

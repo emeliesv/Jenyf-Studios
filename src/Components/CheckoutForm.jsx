@@ -1,6 +1,5 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../Context/CartContext";
 import payment1 from "../Assets/payment1.png";
 import payment2 from "../Assets/payment2.png";
 import payment3 from "../Assets/payment3.png";

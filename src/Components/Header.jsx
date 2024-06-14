@@ -13,6 +13,7 @@ const Header = () => {
           className="w-auto h-4 object-contain"
         />
       </Link>
+      {/* Render navbar conditionally depending on screensize */}
       <div className=" w-3/5 hidden sm:flex justify-between">
         <div className="flex items-center">
           <Nav />

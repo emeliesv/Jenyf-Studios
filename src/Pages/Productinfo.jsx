@@ -1,15 +1,11 @@
-import { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useContext } from "react";
 import { useProducts } from "../Context/ProductContext";
 import { CartContext } from "../Context/CartContext";
 
 const ProductInfo = () => {
-  const { productTitle } = useParams();
   const { data, isLoading, isError } = useProducts();
   const { addToCart } = useContext(CartContext);
   const id = localStorage.getItem("lastClickItem");
-  console.log("item in ls", id);
-  console.log(data);
 
   if (isError) return <h1>Failed to fetch product</h1>;
   if (isLoading || !data) return <h1>Loading...</h1>;
@@ -43,4 +39,3 @@ const ProductInfo = () => {
 };
 
 export default ProductInfo;
-

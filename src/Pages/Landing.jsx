@@ -38,7 +38,6 @@ const Landing = () => {
           alt="Three people sitting on the grass laughing"
           className="w-full h-full object-cover object-[center_top_20%]"
         ></img>
-        <div></div>
         <h1 className="absolute top-1/4 left-1/2 transform -translate-x-1/2 text-white text-2xl sm:text-4xl">
           Hello fall
         </h1>

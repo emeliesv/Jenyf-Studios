@@ -18,7 +18,9 @@ const CategoryCard = ({ category, image }) => {
           <h3 className="text-lg">{category}</h3>
         </div>
 
-        <button className="mt-2 bg-white text-black text-xs">Shop Now</button>
+        <button className="mt-2 bg-jenyfNeutralLight hover:bg-jenyfPrimaryBrand text-black text-xs pointer-events-auto">
+          Shop Now
+        </button>
       </div>
     </div>
   );

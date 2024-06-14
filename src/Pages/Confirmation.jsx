@@ -18,7 +18,7 @@ const Confirmation = () => {
 
   return (
     <section className="flex flex-col items-center justify-center">
-      <h1 className="text-xl font-semibold m-2 mt-10">Confirmation</h1>
+      <h2 className="text-xl font-semibold m-2 mt-10">Confirmation</h2>
       <img
         src={check}
         alt="jenyf studios logo"
