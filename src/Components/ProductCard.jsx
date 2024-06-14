@@ -27,8 +27,11 @@ const ProductCard = ({ product }) => {
       </div>
     );
   };
-
-  const urlSafeTitle = title.replace(/\s+/g, "-").toLowerCase();
+  
+  const urlSafeTitle = title
+    .replace(/[^a-z0-9]+/gi, "-")
+    .replace(/-+$/, "")
+    .toLowerCase();
   /*   const truncatedDescription = description.split(" ").slice(0, 10).join(" ");
    */
   return (
