@@ -3,7 +3,19 @@ import Nav from "./Nav";
 import CartIcon from "./CartIcon";
 import logo from "../Assets/logo_large.png";
 import { Link } from "react-router-dom";
+import { CartContext } from "../Context/CartContext";
+import { useContext, useEffect } from "react";
 const Header = () => {
+  const { orderConfirmed, setCart } = useContext(CartContext);
+
+  console.log("orderConfirmed:", orderConfirmed);
+
+  useEffect(() => {
+    if (orderConfirmed) {
+      setCart([]);
+    }
+  }, [orderConfirmed]);
+
   return (
     <header className="flex justify-between items-center sticky top-0 z-10 bg-jenyfPrimaryBrand font-semibold px-8">
       <Link to="/">

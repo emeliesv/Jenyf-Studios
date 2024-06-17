@@ -1,20 +1,27 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Cart from "../Components/Cart";
-import { useLocation, Link, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import check from "../Assets/confirmationcheck.png";
 import { CartContext } from "../Context/CartContext";
 
 const Confirmation = () => {
   const location = useLocation();
-  const { formData } = location.state || {};
+  const { formData, cart } = location.state || {};
 
-  const { clearCart } = useContext(CartContext);
+  const { clearCart, setOrderConfirmed, orderConfirmed } =
+    useContext(CartContext);
   const navigate = useNavigate();
 
   const handleContinueShopping = () => {
     clearCart();
     navigate("/products");
   };
+
+  useEffect(() => {
+    setOrderConfirmed(true);
+  }, [orderConfirmed]);
+
+  console.log("cart from data:", cart);
 
   return (
     <section className="flex flex-col items-center justify-center">
@@ -42,7 +49,15 @@ const Confirmation = () => {
           </div>
         )}
         <div className="border-black border-y m-6">
-          <Cart showControls={false} />
+          {/*           {<Cart showControls={false} confirmationCart={cart} />}
+           */}
+          {cart.map((item) => {
+            return (
+              <div key={item.id}>
+                <p>{item.description}</p>
+              </div>
+            );
+          })}
         </div>
 
         <button

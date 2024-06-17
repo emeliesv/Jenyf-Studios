@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import payment1 from "../Assets/payment1.png";
 import payment2 from "../Assets/payment2.png";
 import payment3 from "../Assets/payment3.png";
 import payment4 from "../Assets/payment4.png";
+import { CartContext } from "../Context/CartContext";
 
 const CheckoutForm = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,7 @@ const CheckoutForm = () => {
     city: "",
   });
   const [selectedImage, setSelectedImage] = useState(null);
+  const { setOrderConfirmed, cart } = useContext(CartContext);
 
   const navigate = useNavigate();
 
@@ -32,7 +34,7 @@ const CheckoutForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/confirmation", { state: { formData } });
+    navigate("/confirmation", { state: { formData, cart } });
   };
 
   return (
