@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 
-const Cart = ({ showControls }) => {
+const Cart = ({ showControls, confirmationCart }) => {
   const { cart, removeFromCart, addToCart, calculateTotalSum, clearCart } =
     useContext(CartContext);
 
@@ -12,9 +12,11 @@ const Cart = ({ showControls }) => {
     }
   };
 
+  const finalCart = confirmationCart ?? cart;
+
   return (
     <section className=" flex flex-col justify-between h-1/2 my-5 bg-white sm:w-full sm:mx-2 lg:w-1/2">
-      {cart.map((cartItem) => (
+      {finalCart.map((cartItem) => (
         <div key={cartItem.cartID} className="flex items-center">
           <img
             src={cartItem.image}
@@ -33,12 +35,14 @@ const Cart = ({ showControls }) => {
                 <div>
                   <button
                     onClick={() => removeFromCart(cartItem.id)}
-                    className="border border-solid border-black py-0 md:py-1 min-w-8 md:min-w-12 mr-2 mt-2 mb-4">
+                    className="border border-solid border-black py-0 md:py-1 min-w-8 md:min-w-12 mr-2 mt-2 mb-4"
+                  >
                     -
                   </button>
                   <button
                     onClick={() => addToCart(cartItem)}
-                    className="border border-solid border-black py-0 md:py-1 min-w-8 md:min-w-12">
+                    className="border border-solid border-black py-0 md:py-1 min-w-8 md:min-w-12"
+                  >
                     +
                   </button>
                 </div>
@@ -56,7 +60,8 @@ const Cart = ({ showControls }) => {
           <button
             type="button"
             onClick={handleCancel}
-            className="w-2/5 p-4 ml-2 text-xxs text-start md:text-xs font-medium underline border-none">
+            className="w-2/5 p-4 ml-2 text-xxs text-start md:text-xs font-medium underline border-none"
+          >
             Empty shopping cart
           </button>
         )}

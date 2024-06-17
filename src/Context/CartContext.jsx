@@ -7,6 +7,9 @@ export const CartProvider = (props) => {
     JSON.parse(localStorage.getItem("cart")) || []
   );
 
+  const [orderConfirmed, setOrderConfirmed] = useState(false);
+
+  console.log("ordeConfirmed i context:", orderConfirmed);
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
@@ -67,6 +70,8 @@ export const CartProvider = (props) => {
         removeFromCart,
         calculateTotalSum,
         clearCart,
+        orderConfirmed,
+        setOrderConfirmed,
       }}
     >
       {props.children}
