@@ -21,7 +21,13 @@ const Confirmation = () => {
     setOrderConfirmed(true);
   }, [orderConfirmed]);
 
-  console.log("cart from data:", cart);
+  const calculateConfirmTotal = () => {
+    const totalSum = cart.reduce(
+      (total, item) => total + item.price * item.amount,
+      0
+    );
+    return Math.round(totalSum * 100) / 100;
+  };
 
   return (
     <section className="flex flex-col items-center justify-center">
@@ -49,15 +55,28 @@ const Confirmation = () => {
           </div>
         )}
         <div className="border-black border-y m-6">
-          {/*           {<Cart showControls={false} confirmationCart={cart} />}
-           */}
-          {cart.map((item) => {
+          {cart.map((cartItem) => {
             return (
-              <div key={item.id}>
-                <p>{item.description}</p>
+              <div key={cartItem.cartID} className="flex items-center">
+                <img
+                  src={cartItem.image}
+                  alt={cartItem.title}
+                  className="m-6 w-1/3 lg:1/2"
+                />
+                <div className="w-2/3 mr-4 flex-col md:flex-row">
+                  <div className="flex flex-col">
+                    <p className="font-semibold text-xs md:text-sm lg:text-base mb-4">
+                      {cartItem.title}
+                    </p>
+                    <p className="text-xs">Amount: {cartItem.amount}</p>
+                  </div>
+                </div>
               </div>
             );
           })}
+          <h3 className="text-right my-3 pr-3 font-semibold w-full">
+            Total price: {calculateConfirmTotal()} SEK
+          </h3>
         </div>
 
         <button
