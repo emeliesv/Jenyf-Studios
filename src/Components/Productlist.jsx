@@ -11,8 +11,6 @@ const ProductList = ({ selectedCategory }) => {
   const [page, setPage] = useState(1);
 
   const handlePageChange = (event, value) => {
-    console.log(event);
-    console.log("pagevalue", value);
     setPage(value);
   };
 
