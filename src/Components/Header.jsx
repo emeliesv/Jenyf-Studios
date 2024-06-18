@@ -8,8 +8,6 @@ import { useContext, useEffect } from "react";
 const Header = () => {
   const { orderConfirmed, setCart } = useContext(CartContext);
 
-  console.log("orderConfirmed:", orderConfirmed);
-
   useEffect(() => {
     if (orderConfirmed) {
       setCart([]);
